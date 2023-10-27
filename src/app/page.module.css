@@ -7,6 +7,29 @@
   min-height: 100vh;
 }
 
+.timetable table{
+	border: 1px solid #595959;
+	border-collapse: collapse;
+}
+
+.timetable td{
+	border: 1px solid #595959;
+	border-collapse: collapse;
+  padding: 3px;
+	height: 45px;
+	width: 60px;
+}
+
+.timetable th{
+	border: 1px solid #595959;
+	border-collapse: collapse;
+  padding: 3px;
+	height: 45px;
+	width: 60px;
+  background: #ffce9e;
+}
+
+
 .attcon{
   display: flex;
   background: #ff7c5c;
