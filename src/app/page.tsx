@@ -19,7 +19,9 @@ export default function Home() {
         <h2>出席する授業を選択</h2>
       </div>
       <div>
+        <h3>現在出席受付中の授業</h3>
         <a className={styles.attcon}>PBL演習Ⅱ：<button>出席する</button></a>
+        <h3>出席受付時間外の授業</h3>
         <a className={styles.attcon}>ウェブプログラミング：<button>出席する</button></a>
       </div>
       <Link href="src/app/attendStatus" className={styles.button}>
@@ -93,6 +95,14 @@ export default function Home() {
             </tbody>
           </table>
         </details>
+      </div>
+      <Link href="timetable" className={styles.button}>
+        講義コード登録
+      </Link>
+      <div><h1>講義コード登録</h1></div>
+      <div>
+        <input type='text'/>
+        <button>登録</button>
       </div>
       <Link href="timetable" className={styles.button}>
         時間割
