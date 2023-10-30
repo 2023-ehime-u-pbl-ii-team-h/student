@@ -10,9 +10,6 @@ export default function Home() {
       </div>
       
       <div>
-        <h1>出席する</h1>
-      </div>
-      <div>
         {/* ここに出席するページのコンテンツを追加 */}
         <h2>出席する授業を選択</h2>
       </div>
@@ -20,11 +17,11 @@ export default function Home() {
         <h3>現在出席受付中の授業</h3>
         <a className={styles.attcon}>PBL演習Ⅱ：<button>出席する</button></a>
         <h3>出席受付時間外の授業</h3>
-        <a className={styles.attcon}>ウェブプログラミング：<button>出席する</button></a>
+        <a className={styles.attcon}>ウェブプログラミング</a>
       </div>
       
       <div>
-        <h1>出席状況</h1>
+        <h2>出席状況</h2>
       </div>
       <div>
         {/* ここに出席情報を表示するコンテンツを追加 */}
@@ -93,14 +90,14 @@ export default function Home() {
         </details>
       </div>
       
-      <div><h1>講義コード登録</h1></div>
+      <div><h2>講義コード登録</h2></div>
       <div>
         <input type='text'/>
         <button>登録</button>
       </div>
       
       <div>
-        <h1>時間割</h1>
+        <h2>時間割</h2>
       </div>
       <div>
         {/* ここに時間割ページのコンテンツを追加 */}
