@@ -5,26 +5,17 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main className={styles.main}>
+      <h1 className={styles.title}>出席管理</h1>
+      <h2>出席する授業を選択</h2>
+      <h3>現在出席受付中の授業</h3>
+      <div><a className={styles.attcon}>PBL演習Ⅱ：<button>出席する</button></a></div>
+      <h3>出席受付時間外の授業</h3>
+      <div><a className={styles.attcon}>ウェブプログラミング</a></div>
+
+      <h2>出席状況</h2>
+
+      {/* ここに出席情報を表示するコンテンツを追加 */}
       <div>
-        <h1 className={styles.title}>出席管理</h1>
-      </div>
-      
-      <div>
-        {/* ここに出席するページのコンテンツを追加 */}
-        <h2>出席する授業を選択</h2>
-      </div>
-      <div>
-        <h3>現在出席受付中の授業</h3>
-        <a className={styles.attcon}>PBL演習Ⅱ：<button>出席する</button></a>
-        <h3>出席受付時間外の授業</h3>
-        <a className={styles.attcon}>ウェブプログラミング</a>
-      </div>
-      
-      <div>
-        <h2>出席状況</h2>
-      </div>
-      <div>
-        {/* ここに出席情報を表示するコンテンツを追加 */}
         <details className={styles.details}>
           <summary className={styles.summary}>PBL演習Ⅱ</summary>
           <table>
@@ -89,16 +80,14 @@ export default function Home() {
           </table>
         </details>
       </div>
-      
-      <div><h2>講義コード登録</h2></div>
+
+      <h2>講義コード登録</h2>
       <div>
-        <input type='text'/>
+        <input type='text' />
         <button>登録</button>
       </div>
-      
-      <div>
-        <h2>時間割</h2>
-      </div>
+
+      <h2>時間割</h2>
       <div>
         {/* ここに時間割ページのコンテンツを追加 */}
         <table className={styles.timetable}>
