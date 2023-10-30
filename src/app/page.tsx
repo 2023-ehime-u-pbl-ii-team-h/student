@@ -18,66 +18,16 @@ export default function Home() {
       <div>
         <details className={styles.details}>
           <summary className={styles.summary}>PBL演習Ⅱ</summary>
-          <table>
-            <tbody>
-              <tr>
-                <th>授業回数</th>
-                <th>出席状況</th>
-              </tr>
-              <tr>
-                <td>第1回</td>
-                <td>〇</td>
-              </tr>
-              <tr>
-                <td>第2回</td>
-                <td>△</td>
-              </tr>
-              <tr>
-                <td>第3回</td>
-                <td>✕</td>
-              </tr>
-              <tr>
-                <td>第4回</td>
-                <td>〇</td>
-              </tr>
-              <tr>
-                <td>第5回</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          <p>出席：5回</p>
+          <p>遅刻：1回</p>
+          <p>欠席：0回</p>
         </details>
 
         <details className={styles.details}>
           <summary className={styles.summary}>ウェブプログラミング</summary>
-          <table>
-            <tbody>
-              <tr>
-                <th>授業回数</th>
-                <th>出席状況</th>
-              </tr>
-              <tr>
-                <td>第1回</td>
-                <td>〇</td>
-              </tr>
-              <tr>
-                <td>第2回</td>
-                <td>〇</td>
-              </tr>
-              <tr>
-                <td>第3回</td>
-                <td>〇</td>
-              </tr>
-              <tr>
-                <td>第4回</td>
-                <td>〇</td>
-              </tr>
-              <tr>
-                <td>第5回</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          <p>出席：4回</p>
+          <p>遅刻：5回</p>
+          <p>欠席：1回</p>
         </details>
       </div>
 
