@@ -31,10 +31,11 @@ pnpm dev
 
 `src/` 内のサブフォルダは以下のような意味の分類になっています.
 
+- `app/` - Next.js の App Router のエントリポイント
 - `atoms/` - 単体で意味をなさない共通部品
+- `commands/` - ユーザーがアプリに対して行うコマンドの処理
 - `molecules/` - 意味をなすがそのままではページ中に使えない共通部品
 - `organisms/` - そのままページ中に使える共通部品
 - `queries/` - データ取得の React Hooks
 - `reducers/` - アプリの状態遷移と遷移するアクション
-- `commands/` - ユーザーがアプリに対して行うコマンドの処理
-- `app/` - Next.js の App Router のエントリポイント
+- `theme/` - Material Design 準拠のカラーテーマの CSS
