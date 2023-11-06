@@ -1,7 +1,5 @@
-import React from 'react';
-import styles from './TopNavBar.module.css'; // CSS Moduleを利用
+import styles from './TopNavBar.module.css';
 
-const TopNavBar = ({ isLoggedIn, userInitial }) => {
   const HamburgerIcon = () => (
     <div className={styles.hamburger}>
       <span className={styles.bar}></span>
@@ -16,10 +14,11 @@ const TopNavBar = ({ isLoggedIn, userInitial }) => {
 
   const UserAvatar = ({ isLoggedIn, userInitial }) => (
     <div className={styles.avatar}>
-      {isLoggedIn ? userInitial : '👤'} {/* ログイン中の場合イニシャル、それ以外はアイコン */}
+      {isLoggedIn ? userInitial : '👤'}
     </div>
   );
 
+  const TopNavBar = ({ isLoggedIn, userInitial }) => {
   return (
     <div className={styles.topNavBar}>
       <HamburgerIcon />
