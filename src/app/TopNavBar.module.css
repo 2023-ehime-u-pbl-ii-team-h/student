@@ -12,7 +12,7 @@
 .hamburgerIcon, .screenLabel, .avatar {
   flex: 1;
   display: flex;
-  justify-content: center; /* 中央揃えをしたい場合 */
+  justify-content: center;
   align-items: center;
 }
 

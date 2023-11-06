@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import TopNavBar from './トップナビゲーションバー'
 
 export default function Home() {
   return (
@@ -27,6 +28,10 @@ export default function Home() {
           </a>
         </div>
       </div>
+
+      <div>
+      <TopNavBar isLoggedIn={true} userInitial="" />
+        </div>
 
       <div className={styles.center}>
         <Image
