@@ -1,0 +1,27 @@
+
+
+.apply, .applied, .overtime{
+    border-radius: 9999px;
+    height: 2.5rem;
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.applied, .overtime{
+    opacity: 38%;
+}
+
+.applied{
+    background: url('checkMark.jpeg');
+}
+
+
+
+.apply:hover{
+    opacity: 92%;
+}
+
+.apply:active{
+    opacity: 10%;
+}
+

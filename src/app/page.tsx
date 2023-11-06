@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import AttendButton from './attendButton'
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         </div>
       </div>
 
+
       <div className={styles.center}>
         <Image
           className={styles.logo}
@@ -37,6 +39,16 @@ export default function Home() {
           height={37}
           priority
         />
+      </div>
+
+      <div>
+        <AttendButton state={1} />
+      </div>
+      <div>
+        <AttendButton state={2} />
+      </div>
+      <div>
+        <AttendButton state={3} />
       </div>
 
       <div className={styles.grid}>
