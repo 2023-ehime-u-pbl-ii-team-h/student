@@ -16,20 +16,6 @@
     opacity: 38%;
 }
 
-.applied {
-    background: url('/checkMark.jpeg')no-repeat 20px center / 25px auto;
-    padding: 15px 15px 15px 60px;
-    text-align: center;
-}
-
-.overtime{
-    background: url('/crossMark.jpeg')no-repeat 20px center / 25px auto;
-    padding: 15px 15px 15px 60px;
-    text-align: center;
-}
-
-
-
 .apply:hover {
     opacity: 92%;
 }
