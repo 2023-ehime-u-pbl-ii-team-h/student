@@ -26,7 +26,7 @@ export default function AttendButton({state}: AttendButtonProps) {
         <div>
         <button className={aButton[btnClass]}>
             {iconConponent}
-            <span className='label'>{label}</span>
+            <span className={aButton.label}>{label}</span>
         </button>
         </div>
     )

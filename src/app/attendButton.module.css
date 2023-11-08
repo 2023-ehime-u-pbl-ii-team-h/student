@@ -23,3 +23,12 @@
 .apply:active {
     opacity: 10%;
 }
+
+.icon{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.label{
+    padding-left: 0.25rem;
+}
