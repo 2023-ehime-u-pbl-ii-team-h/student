@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import AttendButton from './attendButton'
+import AttendButton from './attend-button'
 
 export default function Home() {
   return (
@@ -42,13 +42,13 @@ export default function Home() {
       </div>
 
       <div>
-        <AttendButton state={1} />
+        <AttendButton state={'ENABLED'} />
       </div>
       <div>
-        <AttendButton state={2} />
+        <AttendButton state={'DONE'} />
       </div>
       <div>
-        <AttendButton state={3} />
+        <AttendButton state={'OVERTIME'} />
       </div>
 
       <div className={styles.grid}>

@@ -2,8 +2,10 @@ import aButton from './attendButton.module.css'
 import { BsCheckLg } from 'react-icons/bs'
 import { RxCross1 } from 'react-icons/rx'
 
+export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME";
+
 interface AttendButtonProps {
-    state: number;
+    state: AttendButtonState;
     onClick: () => void;
 }
 
@@ -11,14 +13,14 @@ interface AttendButtonProps {
         let label;
         let btnClass = '';
         let iconConponent = null;
-        if (state === 1) {
+        if (state === 'ENABLED') {
             label = '出席申請する';
-            btnClass = 'apply';
-        } else if (state === 2) {
+            btnClass = 'enabled';
+        } else if (state === 'DONE') {
             label = '出席済み';
-            btnClass = 'applied';
+            btnClass = 'done';
             iconConponent = <BsCheckLg className={aButton.icon} />;
-        } else if (state === 3) {
+        } else if (state === 'OVERTIME') {
             label = '申請時間外';
             btnClass = 'overtime';
             iconConponent = <RxCross1 className={aButton.icon} />;
