@@ -1,0 +1,41 @@
+.topNavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--surface-color); 
+  color: var(--on-surface-color);
+  height: 4rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.hamburgerIcon, .screenLabel, .avatar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: #333;
+}
+
+.screenLabel {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avatar {
+  flex: 0 0 auto;
+}
