@@ -2,11 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--surface-color); 
-  color: var(--on-surface-color);
   height: 4rem;
   width: 100%;
   padding: 0 1rem;
+  composes: surface from 'src/theme/colors.module.css';
 }
 
 .hamburgerIcon, .screenLabel, .avatar {

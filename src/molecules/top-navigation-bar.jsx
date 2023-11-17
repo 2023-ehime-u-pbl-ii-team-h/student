@@ -20,7 +20,7 @@ import styles from './top-navigation-bar.module.css';
 
   const TopNavBar = ({ isLoggedIn, userInitial }) => {
   return (
-    <div className={styles.topNavBar}>
+    <div className={`topNavBar surface on-surface-text`}>
       <HamburgerIcon />
       <CurrentScreenLabel label="ホーム" />
       <UserAvatar isLoggedIn={isLoggedIn} userInitial={userInitial} />
