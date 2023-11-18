@@ -1,11 +1,13 @@
 .topNavBar {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 4rem;
   width: 100%;
   padding: 0 1rem;
-  composes: surface from 'src/theme/colors.module.css';
 }
 
 .hamburgerIcon, .screenLabel, .avatar {
