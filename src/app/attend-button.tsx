@@ -4,7 +4,7 @@ import { RxCross1 } from 'react-icons/rx'
 
 export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME";
 
-interface AttendButtonProps {
+export type AttendButtonProps = {
     state: AttendButtonState;
     onClick: () => void;
 }
