@@ -1,4 +1,4 @@
-import aButton from './attendButton.module.css'
+import aButton from './attend-button.module.css'
 import { BsCheckLg } from 'react-icons/bs'
 import { RxCross1 } from 'react-icons/rx'
 
