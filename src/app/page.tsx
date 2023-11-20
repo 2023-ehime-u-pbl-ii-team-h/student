@@ -29,9 +29,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
       <TopNavBar isLoggedIn={true} userInitial="" />
-        </div>
 
       <div className={styles.center}>
         <Image
