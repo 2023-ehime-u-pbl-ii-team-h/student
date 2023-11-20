@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import TopNavBar from '../molecules/top-navigation-bar'
+import Image from "next/image";
+import styles from "./page.module.css";
+import TopNavBar from "../molecules/top-navigation-bar";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
       </div>
 
-      <TopNavBar isLoggedIn={true} userInitial="" />
+      <TopNavBar />
 
       <div className={styles.center}>
         <Image
@@ -94,5 +94,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
