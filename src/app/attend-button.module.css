@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 1.5rem;
+    gap: 0.25rem;
     border-radius: 9999px;
     height: 2.5rem;
     background: var(--primary-container);
@@ -22,11 +23,7 @@
     opacity: 10%;
 }
 
-.icon{
-    width: 1.3rem;
-    height: 1.3rem;
-}
-
-.label{
-    padding-left: 0.25rem;
+.icon {
+    width: auto;
+    height: auto;
 }
