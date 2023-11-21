@@ -1,6 +1,8 @@
 import aButton from './attend-button.module.css'
 import { BsCheckLg } from 'react-icons/bs'
 import { RxCross1 } from 'react-icons/rx'
+import { ReactNode } from 'react';
+import colors from 'src/theme/colors.module.css'
 
 export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME";
 
@@ -10,28 +12,35 @@ export type AttendButtonProps = {
 }
 
 export default function AttendButton({ state, onClick }: AttendButtonProps) {
-    let label;
-    let btnClass = '';
-    let iconConponent = null;
-    if (state === 'ENABLED') {
-        label = '出席申請する';
-        btnClass = 'enabled';
-    } else if (state === 'DONE') {
-        label = '出席済み';
-        btnClass = 'done';
-        iconConponent = <BsCheckLg className={aButton.icon} />;
-    } else if (state === 'OVERTIME') {
-        label = '申請時間外';
-        btnClass = 'overtime';
-        iconConponent = <RxCross1 className={aButton.icon} />;
-    }
+    const variants: Record<AttendButtonState, {
+        label: string;
+        btnClass: string;
+        icon: ReactNode;
+    }> = {
+        ENABLED: {
+            label: "出席申請する",
+            btnClass: "enabled",
+            icon: null,
+        },
+        DONE: {
+            label: "出席済み",
+            btnClass: "done",
+            icon: <BsCheckLg className={aButton.icon} />,
+        },
+        OVERTIME: {
+            label: "申請時間外",
+            btnClass: "overtime",
+            icon: <RxCross1 className={aButton.icon} />,
+        },
+    };
+    const { label, btnClass, icon } = variants[state];
     return (
-        <div className={aButton.button} onClick={onClick}>
+        <div className={`${aButton.button} ${colors.primary-container}`} onClick={onClick}>
             <div className={aButton[btnClass]}>
-                {iconConponent}
+                {icon}
             </div>
             <div>
-                <span className={aButton[btnClass]}>{label}</span>
+                <span className={`${aButton[btnClass]} ${colors.on-primary-container}`}>{label}</span>
             </div>
         </div>
     )

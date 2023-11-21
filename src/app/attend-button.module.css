@@ -6,8 +6,6 @@
     gap: 0.25rem;
     border-radius: 9999px;
     height: 2.5rem;
-    background: var(--primary-container);
-    color: var(--on-primary-container);
 }
 
 .done,
