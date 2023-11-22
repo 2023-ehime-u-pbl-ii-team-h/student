@@ -34,12 +34,10 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
     };
     const { label, btnClass, icon } = variants[state];
     return (
-        <div className={`${aButton.button} ${aButton[btnClass]} primary-container`} onClick={onClick}>
+        <div className={`${aButton.button} primary-container on-primary-container-text`} onClick={onClick}>
             <div className={aButton[btnClass]}>
                 {icon}
-            </div>
-            <div>
-                <span className={`${aButton[btnClass]} on-primary-container`}>{label}</span>
+                <span>{label}</span>
             </div>
         </div>
     )
