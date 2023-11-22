@@ -12,12 +12,7 @@ const RedirectPage = () => {
 
         if (authCode) {
             fetchAccessToken(authCode)
-                .then(accessToken => {
-                    localStorage.setItem('auth', accessToken.authToken);
-                    localStorage.setItem('refresh', accessToken.refreshToken);
-
-                    router.push('/');
-                })
+                .then(() => router.push('/'))
                 .catch(err => {
                     setError('ログインに失敗しました。もう一度お試しください。');
                 });
