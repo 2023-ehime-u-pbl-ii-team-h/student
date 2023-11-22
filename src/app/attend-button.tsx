@@ -2,7 +2,6 @@ import aButton from './attend-button.module.css'
 import { BsCheckLg } from 'react-icons/bs'
 import { RxCross1 } from 'react-icons/rx'
 import { ReactNode } from 'react';
-import colors from 'src/theme/colors.module.css'
 
 export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME";
 
@@ -35,12 +34,12 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
     };
     const { label, btnClass, icon } = variants[state];
     return (
-        <div className={`${aButton.button} ${colors.primary-container}`} onClick={onClick}>
+        <div className={`${aButton.button} ${aButton[btnClass]} primary-container`} onClick={onClick}>
             <div className={aButton[btnClass]}>
                 {icon}
             </div>
             <div>
-                <span className={`${aButton[btnClass]} ${colors.on-primary-container}`}>{label}</span>
+                <span className={`${aButton[btnClass]} on-primary-container`}>{label}</span>
             </div>
         </div>
     )
