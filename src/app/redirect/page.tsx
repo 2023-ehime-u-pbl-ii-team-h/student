@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './RedirectPage.module.css';
 
 const RedirectPage = () => {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const authCode = router.query.authorization_code;
+        const authCode = searchParams.get("authorization_code");
 
         if (authCode) {
             fetchAccessToken(authCode)
