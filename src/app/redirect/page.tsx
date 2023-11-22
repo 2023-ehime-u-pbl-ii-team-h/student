@@ -1,4 +1,3 @@
-// src/app/redirect/page.tsx
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from './RedirectPage.module.css';
