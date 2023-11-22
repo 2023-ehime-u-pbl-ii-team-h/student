@@ -2,26 +2,29 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.5rem;
-    gap: 0.25rem;
+    overflow: hidden;
     border-radius: 9999px;
     height: 2.5rem;
 }
 
-.done,
-.overtime {
-    opacity: 38%;
+.button > div {
+    width: 100%;
+    height: 100%;
+    padding: 0 1.5rem;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
-.enabled:hover {
-    opacity: 92%;
+.button > .done, .button > .overtime {
+    background-color: color-mix(in srgb, currentcolor 38%, transparent);
 }
 
-.enabled:active {
-    opacity: 10%;
+.button:hover > .enabled {
+    background-color: color-mix(in srgb, currentcolor 8%, transparent);
 }
 
-.icon {
-    width: auto;
-    height: auto;
+.button:active > .enabled {
+    background-color: color-mix(in srgb, currentcolor 10%, transparent);
 }
