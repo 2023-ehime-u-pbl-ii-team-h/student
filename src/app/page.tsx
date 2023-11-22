@@ -3,6 +3,7 @@ import styles from './page.module.css'
 import AttendButton from '../arganisms/attend-button'
 
 export default function Home() {
+  let attendState = "ENABLED";
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -41,15 +42,7 @@ export default function Home() {
         />
       </div>
 
-      <div>
-        <AttendButton state={'ENABLED'} />
-      </div>
-      <div>
-        <AttendButton state={'DONE'} />
-      </div>
-      <div>
-        <AttendButton state={'OVERTIME'} />
-      </div>
+      <AttendButton state={attendState} />
 
       <div className={styles.grid}>
         <a
