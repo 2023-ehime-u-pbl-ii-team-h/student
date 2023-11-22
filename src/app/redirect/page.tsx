@@ -71,7 +71,7 @@ const RedirectPage = () => {
             {error ? (
                 <div className={styles.error}>
                     <p>{error}</p>
-                    <button onClick={() => router.push('/')}>トップページへ戻る</button>
+                    <Link href="/">トップページへ戻る</Link>
                 </div>
             ) : (
                 <div className={styles.loader}>Loading...</div>
