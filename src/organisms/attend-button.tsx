@@ -7,7 +7,7 @@ export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME";
 
 export type AttendButtonProps = {
     state: AttendButtonState;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export default function AttendButton({ state, onClick }: AttendButtonProps) {

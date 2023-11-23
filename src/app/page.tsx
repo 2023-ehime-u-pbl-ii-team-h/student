@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import AttendButton from '../organisms/attend-button'
+import TopNavBar from "../molecules/top-navigation-bar";
 
 export default function Home() {
-  let attendState = "ENABLED";
+  const attendState = "ENABLED";
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -17,7 +18,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -30,6 +31,7 @@ export default function Home() {
         </div>
       </div>
 
+      <TopNavBar />
 
       <div className={styles.center}>
         <Image
@@ -96,5 +98,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
