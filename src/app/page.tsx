@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import AttendButton from '../arganisms/attend-button'
+import AttendButton from '../organisms/attend-button'
 
 export default function Home() {
   let attendState = "ENABLED";
