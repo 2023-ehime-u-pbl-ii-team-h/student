@@ -1,8 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image'
+import styles from './page.module.css'
+import AttendButton from '../organisms/attend-button'
 import TopNavBar from "../molecules/top-navigation-bar";
 
 export default function Home() {
+  const attendState = "ENABLED";
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -41,6 +43,8 @@ export default function Home() {
           priority
         />
       </div>
+
+      <AttendButton state={attendState} />
 
       <div className={styles.grid}>
         <a
