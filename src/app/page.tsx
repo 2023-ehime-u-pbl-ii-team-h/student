@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import AttendButton from '../organisms/attend-button'
+import Image from "next/image";
+import styles from "./page.module.css";
+import AttendButton from "../organisms/attend-button";
 import TopNavBar from "../molecules/top-navigation-bar";
 
 export default function Home() {
