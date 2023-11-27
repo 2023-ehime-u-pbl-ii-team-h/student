@@ -6,6 +6,10 @@
 }
 
 .gridItem {
-    display: inline-flex;
-    align-items: center;
+    
 }
+
+.icon {
+    position: relative;
+    top: 11.5%;
+  }
