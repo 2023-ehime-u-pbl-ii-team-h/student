@@ -47,7 +47,7 @@ export default function Home() {
 
       <AttendButton state={attendState} />
 
-      <AttendStatus attendanceCount={4} tardinessCount={3} absenceCount={2} />
+      <AttendStatus attendanceCount={14} tardinessCount={13} absenceCount={2} />
 
       <div className={styles.grid}>
         <a
