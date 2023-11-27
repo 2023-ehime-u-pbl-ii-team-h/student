@@ -1,7 +1,7 @@
 .gridContainer {
     display: grid;
     grid-template-columns: 3rem 1fr 1fr;
-    gap: 10px;
+    gap: 1rem;
     width: 100%;
 }
 
