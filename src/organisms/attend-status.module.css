@@ -1,6 +1,6 @@
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(3, 40px);
+    grid-template-columns: 3rem 1fr 1fr;
     gap: 10px;
     width: 100%;
 }
