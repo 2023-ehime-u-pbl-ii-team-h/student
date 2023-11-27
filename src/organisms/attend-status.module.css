@@ -1,12 +1,12 @@
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 40px);
     gap: 10px;
     width: 100%;
 }
 
-.gridItem {
-    
+.times{
+    text-align: right;
 }
 
 .icon {

@@ -16,19 +16,25 @@ export default function AttendStatus(props: AttendanceProps) {
                 <FaRegCircle className={styles.icon} />
             </div>
             <div className={styles.gridItem}>出席</div>
-            <div className={styles.gridItem}>{props.attendanceCount}回</div>
+            <div className={`${styles.gridItem} ${styles.times}`}>
+                {props.attendanceCount}回
+            </div>
 
             <div className={styles.gridItem}>
                 <IoTriangleOutline className={styles.icon} />
             </div>
             <div className={styles.gridItem}>遅刻</div>
-            <div className={styles.gridItem}>{props.tardinessCount}回</div>
+            <div className={`${styles.gridItem} ${styles.times}`}>
+                {props.tardinessCount}回
+            </div>
 
             <div className={styles.gridItem}>
                 <RxCross1 className={styles.icon} />
             </div>
             <div className={styles.gridItem}>欠席</div>
-            <div className={styles.gridItem}>{props.absenceCount}回</div>
+            <div className={`${styles.gridItem} ${styles.times}`}>
+                {props.absenceCount}回
+            </div>
         </div>
     );
 }
