@@ -1,15 +1,15 @@
 .gridContainer {
-    display: grid;
-    grid-template-columns: 3rem 1fr 1fr;
-    gap: 1rem;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 3rem 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
 }
 
-.times{
-    text-align: right;
+.times {
+  text-align: right;
 }
 
 .icon {
-    position: relative;
-    top: 11.5%;
-  }
+  position: relative;
+  top: 11.5%;
+}
