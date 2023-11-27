@@ -3,7 +3,7 @@ import { FaRegCircle } from 'react-icons/fa';
 import { IoTriangleOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 
-interface AttendanceProps {
+export interface AttendanceProps {
     attendanceCount: number;
     tardinessCount: number;
     absenceCount: number;
