@@ -1,12 +1,5 @@
 import styles from "./top-navigation-bar.module.css";
-
-const HamburgerIcon = () => (
-  <div className={styles.hamburger}>
-    <span className={styles.bar}></span>
-    <span className={styles.bar}></span>
-    <span className={styles.bar}></span>
-  </div>
-);
+import { MdMenu } from "react-icons/md";
 
 const CurrentScreenLabel = ({ label }: { label: string }) => (
   <div className={styles.screenLabel}>{label}</div>
@@ -24,7 +17,7 @@ export type TopNavBarProps = {
 const TopNavBar = ({ userInitial, label }: TopNavBarProps) => {
   return (
     <div className={`${styles.topNavBar} surface on-surface-text`}>
-      <HamburgerIcon />
+      <MdMenu className={styles.menuButton} />
       <CurrentScreenLabel label={label ?? "ホーム"} />
       <UserAvatar userInitial={userInitial} />
     </div>

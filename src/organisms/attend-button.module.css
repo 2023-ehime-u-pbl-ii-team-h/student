@@ -5,6 +5,7 @@
   overflow: hidden;
   border-radius: 9999px;
   height: 2.5rem;
+  user-select: none;
 }
 
 .button > div {
@@ -14,12 +15,17 @@
   background-color: transparent;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.25rem;
 }
 
 .button > .done,
 .button > .overtime {
   background-color: color-mix(in srgb, currentcolor 38%, transparent);
+}
+
+.button > .enabled {
+  cursor: pointer;
 }
 
 .button:hover > .enabled {
