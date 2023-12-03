@@ -33,8 +33,6 @@ export const fetchAccessToken = async (authCode) => {
         if (!backendLoginResponse.ok) {
             throw new Error('Failed to login to the backend');
         }
-        
-        return;
     } catch (error) {
         console.error('Error in fetchAccessToken:', error);
         throw error;
