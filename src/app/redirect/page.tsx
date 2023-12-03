@@ -21,6 +21,7 @@ const RedirectPage = () => {
                 router.push('/');
             })
             .catch(err => {
+                console.error(err);
                 setError('ログインに失敗しました。もう一度お試しください。');
             });
     }, [router]);
