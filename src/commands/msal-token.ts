@@ -10,7 +10,7 @@ export const fetchAccessToken = async (authCode) => {
             },
             body: new URLSearchParams({
                 'client_id': 'YOUR_CLIENT_ID', // 実際のクライアントID
-                'scope': 'openid email profile',
+                'scope': 'user.read mail.read',
                 'code': authCode,
                 'redirect_uri': window.location.origin + window.location.pathname,
                 'grant_type': 'authorization_code',
