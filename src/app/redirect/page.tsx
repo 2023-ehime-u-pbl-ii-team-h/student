@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/router';
 import styles from './RedirectPage.module.css';
