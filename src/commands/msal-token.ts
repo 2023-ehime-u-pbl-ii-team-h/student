@@ -1,5 +1,5 @@
-const MICROSOFT_TOKEN_ENDPOINT = 'MicrosoftトークンエンドポイントURL';
-const BACKEND_LOGIN_ENDPOINT = '/loginエンドポイントURL';
+const MICROSOFT_TOKEN_ENDPOINT = 'https://login.microsoftonline.com/organizations/oauth2/v2.0/token';
+const BACKEND_LOGIN_ENDPOINT = 'https://backend.mikuroxina.workers.dev/login';
 
 export const fetchAccessToken = async (authCode) => {
     try {
