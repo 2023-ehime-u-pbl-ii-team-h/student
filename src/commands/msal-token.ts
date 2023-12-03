@@ -12,7 +12,7 @@ export const fetchAccessToken = async (authCode) => {
                 'client_id': 'YOUR_CLIENT_ID', // 実際のクライアントID
                 'scope': 'openid email profile',
                 'code': authCode,
-                'redirect_uri': 'YOUR_REDIRECT_URI', // 実際のリダイレクトURI
+                'redirect_uri': window.location.origin + window.location.pathname,
                 'grant_type': 'authorization_code',
             }),
         });
