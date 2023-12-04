@@ -1,14 +1,17 @@
+"use client";
+
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './RedirectPage.module.css';
 import { fetchAccessToken } from '../../commands/msal-token';
 
 const RedirectPage = () => {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const authCode = router.query.authorization_code;
+        const authCode = searchParams.get('authorization_code');
 
         if (!authCode) {
             setError('無効な認証コードです。ログインを再度お試しください。');
@@ -21,6 +24,7 @@ const RedirectPage = () => {
                 router.push('/');
             })
             .catch(err => {
+                console.error(err);
                 setError('ログインに失敗しました。もう一度お試しください。');
             });
     }, [router]);

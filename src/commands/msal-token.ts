@@ -1,5 +1,5 @@
-const MICROSOFT_TOKEN_ENDPOINT = 'MicrosoftトークンエンドポイントURL';
-const BACKEND_LOGIN_ENDPOINT = '/loginエンドポイントURL';
+const MICROSOFT_TOKEN_ENDPOINT = 'https://login.microsoftonline.com/organizations/oauth2/v2.0/token';
+const BACKEND_LOGIN_ENDPOINT = 'https://backend.mikuroxina.workers.dev/login';
 
 export const fetchAccessToken = async (authCode) => {
     try {
@@ -10,9 +10,9 @@ export const fetchAccessToken = async (authCode) => {
             },
             body: new URLSearchParams({
                 'client_id': 'YOUR_CLIENT_ID', // 実際のクライアントID
-                'scope': 'openid email profile',
+                'scope': 'user.read mail.read',
                 'code': authCode,
-                'redirect_uri': 'YOUR_REDIRECT_URI', // 実際のリダイレクトURI
+                'redirect_uri': window.location.origin + window.location.pathname,
                 'grant_type': 'authorization_code',
             }),
         });
@@ -33,8 +33,6 @@ export const fetchAccessToken = async (authCode) => {
         if (!backendLoginResponse.ok) {
             throw new Error('Failed to login to the backend');
         }
-        
-        return;
     } catch (error) {
         console.error('Error in fetchAccessToken:', error);
         throw error;
