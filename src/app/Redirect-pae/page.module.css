@@ -1,0 +1,37 @@
+@import url(theme\theme.css);
+@import url(theme\colors.module.css);
+
+.loader {
+    border: 5px solid var(--md-sys-color-background);
+    border-top: 5px solid var(--md-sys-color-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error {
+    background-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-on-error);
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+.error button {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+.error button:hover {
+    background-color: var(--md-sys-color-primary-container);
+  }
