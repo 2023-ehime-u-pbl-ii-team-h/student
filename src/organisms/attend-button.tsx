@@ -37,7 +37,7 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
   };
   const { label, btnClass, icon } = variants[state];
   return (
-    <div
+    <button
       className={`${aButton.button} primary-container on-primary-container-text`}
       onClick={onClick}
     >
@@ -45,6 +45,6 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
         {icon}
         <span>{label}</span>
       </div>
-    </div>
+    </button>
   );
 }
