@@ -8,7 +8,7 @@ import { fetchAccessToken } from '../../commands/msal-token';
 const RedirectPage = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const authCode = searchParams.get('authorization_code');
