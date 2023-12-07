@@ -2,7 +2,7 @@ const MICROSOFT_TOKEN_ENDPOINT = 'https://login.microsoftonline.com/organization
 const BACKEND_LOGIN_ENDPOINT = 'https://backend.mikuroxina.workers.dev/login';
 const CLIENT_ID = '788aebee-7aa0-4286-b58c-7e35bf22e92a';
 
-export const fetchAccessToken = async (authCode) => {
+export const fetchAccessToken = async (authCode: string): Promise<void> => {
     const microsoftTokenResponse = await fetch(MICROSOFT_TOKEN_ENDPOINT, {
         method: 'POST',
         headers: {
