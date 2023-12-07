@@ -1,5 +1,5 @@
-@import url(theme\theme.css);
-@import url(theme\colors.module.css);
+@import url(theme/theme.css);
+@import url(theme/colors.module.css);
 
 .loader {
     border: 5px solid var(--md-sys-color-background);
