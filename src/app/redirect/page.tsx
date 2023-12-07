@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import styles from './RedirectPage.module.css';
+import styles from './page.module.css';
 import { fetchAccessToken } from '../../commands/msal-token';
 import Link from "next/link";
 
