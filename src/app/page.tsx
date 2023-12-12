@@ -13,7 +13,6 @@ export default function Home() {
       <AttendButton state={attendState} />
 
       <AttendStatus attendanceCount={14} tardinessCount={13} absenceCount={2} />
-
     </main>
   );
 }
