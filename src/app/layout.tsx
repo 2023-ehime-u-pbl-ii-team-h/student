@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const configuration: Configuration = {
   auth: {
-    clientId: "client-id",
+    clientId: "788aebee-7aa0-4286-b58c-7e35bf22e92a",
   },
 };
 
