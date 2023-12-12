@@ -3,8 +3,17 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../theme/theme.css";
 import { MsalProvider } from "@azure/msal-react";
+import { Configuration, PublicClientApplication } from "@azure/msal-browser";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const configuration: Configuration = {
+  auth: {
+    clientId: "client-id",
+  },
+};
+
+const pca = new PublicClientApplication(configuration);
 
 export const metadata: Metadata = {
   title: "出席確認システム - 学生用",
@@ -18,7 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <MsalProvider instance={pca}>{children}</MsalProvider>
+      </body>
     </html>
   );
 }
