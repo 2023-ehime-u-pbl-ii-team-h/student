@@ -12,25 +12,18 @@ export function useAttendAction() {
   const [result, setResult] = useState<AttendResult>({ type: "READY" });
 
   const submit = useCallback(async () => {
-    const submitAt = new Date();
     setResult({ type: "AWAITING" });
-
-    const response = await fetch(ATTNED_API_ENDPOINT, {
-      method: "BODY",
-      body: JSON.stringify({
-        // ...
-      }),
-    });
-    if (!response.ok) {
-      setResult({
-        type: "FAILURE",
-      });
-      return;
+    try {
+      const response = await fetch(ATTNED_API_ENDPOINT, { method: "POST" });
+      if (!response.ok) {
+        setResult({ type: "FAILURE" });
+        return;
+      }
+      setResult({ type: "SUCCESS", response });
+    } catch (error) {
+      console.error(error);
+      setResult({ type: "FAILURE" });
     }
-    setResult({
-      type: "SUCCESS",
-      response,
-    });
   }, [result]);
 
   return [result, submit];
