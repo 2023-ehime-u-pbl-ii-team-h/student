@@ -24,7 +24,7 @@ export function useAttendAction() {
       console.error(error);
       setResult({ type: "FAILURE" });
     }
-  }, [result]);
+  }, []);
 
   return [result, submit];
 }
