@@ -1,8 +1,4 @@
+const BACKEND_LOGIN_ENDPOINT = "https://backend.mikuroxina.workers.dev/login";
 export const navigateToLoginEndpoint = () => {
-    // バックエンドのログインエンドポイント
-    const loginEndpoint = "https://backend.mikuroxina.workers.dev/login";
-  
-    // ページを指定されたログインエンドポイントに遷移
-    window.location.href = loginEndpoint;
-  };
-  
+  window.location.href = BACKEND_LOGIN_ENDPOINT;
+};
