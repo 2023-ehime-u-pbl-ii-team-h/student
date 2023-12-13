@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-const ATTNED_API_ENDPOINT = "https://example.com/attend";
+const ATTNED_API_ENDPOINT = "https://backend.mikuroxina.workers.dev/attendance";
 
 export type AttendResult =
   | { type: "READY" }
