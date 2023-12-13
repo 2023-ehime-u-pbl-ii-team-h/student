@@ -1,6 +1,6 @@
 const BACKEND_LOGOUT_ENDPOINT = "https://backend.mikuroxina.workers.dev/logout";
 
-export const logoutAndClearAuth = async () => {
+export const logoutAndReload = async () => {
   try {
     const response = await fetch(BACKEND_LOGOUT_ENDPOINT, {
       method: "POST",
