@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-const ATTNED_API_ENDPOINT = "https://backend.mikuroxina.workers.dev/attendance";
+const ATTEND_API_ENDPOINT = "https://backend.mikuroxina.workers.dev/attendance";
 
 export type AttendResult =
   | { type: "READY" }
@@ -17,7 +17,7 @@ export function useAttendAction(): [
   const submit = useCallback(async () => {
     setResult({ type: "AWAITING" });
     try {
-      const response = await fetch(ATTNED_API_ENDPOINT, { method: "POST" });
+      const response = await fetch(ATTEND_API_ENDPOINT, { method: "POST" });
       if (!response.ok) {
         setResult({ type: "FAILURE" });
         return;
