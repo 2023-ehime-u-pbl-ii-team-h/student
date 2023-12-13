@@ -8,7 +8,10 @@ export type AttendResult =
   | { type: "SUCCESS"; response: Response }
   | { type: "FAILURE" };
 
-export function useAttendAction() {
+export function useAttendAction(): [
+  result: AttendResult,
+  submit: () => Promise<void>,
+] {
   const [result, setResult] = useState<AttendResult>({ type: "READY" });
 
   const submit = useCallback(async () => {
