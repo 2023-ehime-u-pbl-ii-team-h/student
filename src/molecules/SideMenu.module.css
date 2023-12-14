@@ -14,9 +14,9 @@
     border-bottom-right-radius: 1rem;
   }
   
-  .open {
+.sideMenu[data-open="true"] {
     transform: translateX(0);
-  }
+}
   
   .overlay {
     position: fixed;
