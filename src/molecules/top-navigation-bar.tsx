@@ -12,12 +12,13 @@ const UserAvatar = ({ userInitial }: { userInitial?: string }) => (
 export type TopNavBarProps = {
   userInitial?: string;
   label?: string;
+  openSideMenu: () => void;
 };
 
-const TopNavBar = ({ userInitial, label }: TopNavBarProps) => {
+const TopNavBar = ({ userInitial, label, openSideMenu }: TopNavBarProps) => {
   return (
     <div className={`${styles.topNavBar} surface on-surface-text`}>
-      <MdMenu className={styles.menuButton} />
+      <MdMenu className={styles.menuButton} onClick={openSideMenu} />
       <CurrentScreenLabel label={label ?? "ホーム"} />
       <UserAvatar userInitial={userInitial} />
     </div>

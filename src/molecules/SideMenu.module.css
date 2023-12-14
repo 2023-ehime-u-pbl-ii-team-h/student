@@ -1,0 +1,89 @@
+.sideMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 22.5rem;
+    height: 100%;
+    background-color: var(--surface-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+  
+  .open {
+    transform: translateX(0);
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+  }
+  
+  .topBar {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .closeButton {
+    font-size: 1.5rem;
+    color: var(--on-surface-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .homeButton, .addButton {
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .homeButton:hover, .addButton:hover {
+    background-color: var(--button-hover-background-color);
+  }
+  
+  .subjectList {
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+  
+  .subjectItem {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: #FCE4EC;
+    color: #000;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  } 
+  
+  .subjectItem.highlight {
+    background-color: #fde4ef;
+  }
+
+  .subjectName {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2px;
+  }
+  
+  .lastDate {
+    color: #999;
+    font-size: 0.85em;
+  }
