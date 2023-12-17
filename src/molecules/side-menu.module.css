@@ -5,7 +5,6 @@
     left: 0;
     width: 22.5rem;
     height: 100%;
-    background-color: var(--surface-color);
     transform: translateX(-100%);
     transition: transform 0.15s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
