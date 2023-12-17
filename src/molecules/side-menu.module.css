@@ -59,7 +59,7 @@
 }
   
 .menuItemButton:hover {
-    background-color: var(--button-hover-background-color);
+    background-color: color-mix(in srgb, currentcolor 8%, transparent);
 }
   
   .subjectList {
