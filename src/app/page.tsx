@@ -16,9 +16,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-    <TopNavBar subjects={subjects} />
-    <AttendButton state={attendState} />
-    <AttendStatus attendanceCount={14} tardinessCount={13} absenceCount={2} />
-  </main>
+      <TopNavBar subjects={subjects} />
+      <AttendButton state={attendState} />
+      <AttendStatus attendanceCount={14} tardinessCount={13} absenceCount={2} />
+    </main>
   );
 }

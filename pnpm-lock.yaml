@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@azure/msal-browser':
+    specifier: ^3.6.0
+    version: 3.6.0
+  '@azure/msal-react':
+    specifier: ^2.0.8
+    version: 2.0.8(@azure/msal-browser@3.6.0)(react@18.2.0)
   next:
     specifier: 13.5.4
     version: 13.5.4(@babel/core@7.23.5)(react-dom@18.2.0)(react@18.2.0)
@@ -95,6 +101,29 @@ packages:
     dependencies:
       default-browser-id: 3.0.0
     dev: true
+
+  /@azure/msal-browser@3.6.0:
+    resolution: {integrity: sha512-FrFBJXRJMyWXjAjg4cUNZwEKktzfzD/YD9+S1kj2ors67hKoveam4aL0bZuCZU/jTiHTn0xDQGQh2ksCMXTXtA==}
+    engines: {node: '>=0.8.0'}
+    dependencies:
+      '@azure/msal-common': 14.5.0
+    dev: false
+
+  /@azure/msal-common@14.5.0:
+    resolution: {integrity: sha512-Gx5rZbiZV/HiZ2nEKfjfAF/qDdZ4/QWxMvMo2jhIFVz528dVKtaZyFAOtsX2Ak8+TQvRsGCaEfuwJFuXB6tu1A==}
+    engines: {node: '>=0.8.0'}
+    dev: false
+
+  /@azure/msal-react@2.0.8(@azure/msal-browser@3.6.0)(react@18.2.0):
+    resolution: {integrity: sha512-Kmbq2Mm6vrXfemxf8+q1PWU7dhx8Ck4lB6gXFFDR+Bn1odoLzxksOqm8CKEk+y9Bq1iR54H0raTQ3Avan43oMw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@azure/msal-browser': ^3.6.0
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      '@azure/msal-browser': 3.6.0
+      react: 18.2.0
+    dev: false
 
   /@babel/code-frame@7.23.5:
     resolution: {integrity: sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==}
