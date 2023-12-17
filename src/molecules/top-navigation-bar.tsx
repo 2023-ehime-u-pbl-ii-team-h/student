@@ -16,7 +16,6 @@ const UserAvatar = ({ userInitial }: { userInitial?: string }) => (
 export type TopNavBarProps = {
   userInitial?: string;
   label?: string;
-  openSideMenu: () => void;
   subjects: SideMenuProps["subjects"];
 };
 
