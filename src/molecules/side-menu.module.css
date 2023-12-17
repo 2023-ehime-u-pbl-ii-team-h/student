@@ -53,7 +53,7 @@
     background-color: var(--button-background-color);
     color: var(--button-text-color);
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 9999px;
     cursor: pointer;
     text-align: left;
 }
