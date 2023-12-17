@@ -13,7 +13,6 @@
     flex-direction: column;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    padding-top: 1rem;
   }
   
 .sideMenu[data-open="true"] {
