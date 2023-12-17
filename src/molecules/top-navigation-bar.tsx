@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from "./top-navigation-bar.module.css";
 import { MdMenu } from "react-icons/md";
-import SideMenu from "../molecules/side-menu";
+import SideMenu, { SideMenuProps } from "../molecules/side-menu";
 
 const CurrentScreenLabel = ({ label }: { label: string }) => (
   <div className={styles.screenLabel}>{label}</div>
