@@ -76,24 +76,19 @@
   .subjectItem {
     padding: 1rem;
     margin: 0.5rem 0;
-    background-color: #FCE4EC;
-    color: #000;
     border-radius: 0.5rem;
     display: flex;
     justify-content: space-between;
   } 
   
   .subjectItem.highlight {
-    background-color: #fde4ef;
   }
 
   .subjectName {
     font-weight: bold;
-    color: #333;
     margin-bottom: 2px;
   }
   
   .lastDate {
-    color: #999;
     font-size: 0.85em;
   }
