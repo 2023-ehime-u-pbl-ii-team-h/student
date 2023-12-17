@@ -1,6 +1,15 @@
 import styles from './side-menu.module.css';
 
-const SideMenu = ({ isOpen, closeMenu, subjects }) => {
+export type SideMenuProps = {
+  isOpen: boolean;
+  closeMenu: () => void;
+  subjects: readonly {
+    name: string;
+    lastDate: string;
+  }[];
+};
+
+const SideMenu = ({ isOpen, closeMenu, subjects }: SideMenuProps) => {
   return (
     <>
       {isOpen && <div className={`${styles.overlay} scrim`} onClick={closeMenu}></div>}
