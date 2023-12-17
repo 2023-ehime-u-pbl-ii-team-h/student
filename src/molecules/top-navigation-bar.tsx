@@ -36,7 +36,7 @@ const TopNavBar = ({
     <>
       <div className={`${styles.topNavBar} surface on-surface-text`}>
         <MdMenu className={styles.menuButton} onClick={openSideMenu} />
-        <CurrentScreenLabel label={defaultLabel} />
+        <CurrentScreenLabel label={label} />
         <UserAvatar userInitial={userInitial} />
       </div>
       <SideMenu isOpen={isSideMenuOpen} closeMenu={closeSideMenu} subjects={subjects} />
