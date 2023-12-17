@@ -34,7 +34,8 @@
   .topBar {
     padding: 1.5rem;
     display: flex;
-    justify-content: flex-end;
+  align-items: end;
+  justify-content: space-between;
   }
   
   .closeButton {
