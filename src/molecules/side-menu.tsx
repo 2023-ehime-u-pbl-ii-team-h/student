@@ -8,7 +8,7 @@ const SideMenu = ({ isOpen, closeMenu, subjects }) => {
         <div className={styles.topBar}>
           <button className={styles.closeButton} onClick={closeMenu}>×</button>
         </div>
-        <button className={styles.homeButton}>ホーム</button>
+        <button className={styles.menuItemButton}>ホーム</button>
         <div className={styles.subjectList}>
           {subjects && subjects.map((subject, index) => (
             <button key={index} className={styles.menuItemButton}>
