@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import styles from "./top-navigation-bar.module.css";
 import { MdMenu } from "react-icons/md";
 import SideMenu, { SideMenuProps } from "../molecules/side-menu";
@@ -38,7 +38,11 @@ const TopNavBar = ({
         <CurrentScreenLabel label={label} />
         <UserAvatar userInitial={userInitial} />
       </div>
-      <SideMenu isOpen={isSideMenuOpen} closeMenu={closeSideMenu} subjects={subjects} />
+      <SideMenu
+        isOpen={isSideMenuOpen}
+        closeMenu={closeSideMenu}
+        subjects={subjects}
+      />
     </>
   );
 };
