@@ -14,7 +14,7 @@ const SideMenu = ({ isOpen, closeMenu, subjects }: SideMenuProps) => {
     <>
       {isOpen && <div className={`${styles.overlay} scrim`} onClick={closeMenu}></div>}
       <div className={`${styles.sideMenu} surface`} data-open={isOpen}>
-        <div className={`${styles.topBar} on-surface`}>
+        <div className={`${styles.topBar} on-surface-text`}>
           <span className="title-small on-primary-text">出席確認システム</span>
           <button className={`${styles.closeButton} on-primary`} onClick={closeMenu}>×</button>
         </div>
