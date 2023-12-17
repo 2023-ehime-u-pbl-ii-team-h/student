@@ -44,6 +44,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    transform: translateY(11.5%);
   }
   
 .menuItemButton {
