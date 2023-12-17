@@ -3,22 +3,23 @@ import styles from './side-menu.module.css';
 const SideMenu = ({ isOpen, closeMenu, subjects }) => {
   return (
     <>
-      {isOpen && <div className={styles.overlay} onClick={closeMenu}></div>}
-      <div className={styles.sideMenu} data-open={isOpen}>
-        <div className={styles.topBar}>
-          <span className="title-small">出席確認システム</span>
-          <button className={styles.closeButton} onClick={closeMenu}>×</button>
+      {isOpen && <div className={`${styles.overlay} scrim`} onClick={closeMenu}></div>}
+      <div className={`${styles.sideMenu} surface`} data-open={isOpen}>
+        <div className={`${styles.topBar} on-surface`}>
+          <span className="title-small on-primary-text">出席確認システム</span>
+          <button className={`${styles.closeButton} on-primary`} onClick={closeMenu}>×</button>
         </div>
-        <button className={styles.menuItemButton}>ホーム</button>
+        <button className={`${styles.menuItemButton} on-background-text`}>ホーム</button>
         <div className={styles.subjectList}>
           {subjects && subjects.map((subject, index) => (
-            <button key={index} className={styles.menuItemButton}>
+            <button key={index} className={`${styles.menuItemButton} secondary-container secondary-container-text`}>
               <div className={styles.subjectName}>{subject.name}</div>
               <div className={styles.lastDate}>{subject.lastDate}</div>
             </button>
           ))}
         </div>
-        <button className={styles.menuItemButton}>科目を追加</button>
+        <button className={`${styles.menuItemButton} on-background-text`}>科目を追加</button>
+
       </div>
     </>
   );
