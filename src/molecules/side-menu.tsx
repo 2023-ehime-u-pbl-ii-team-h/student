@@ -6,6 +6,7 @@ const SideMenu = ({ isOpen, closeMenu, subjects }) => {
       {isOpen && <div className={styles.overlay} onClick={closeMenu}></div>}
       <div className={styles.sideMenu} data-open={isOpen}>
         <div className={styles.topBar}>
+          <span className="title-small">出席確認システム</span>
           <button className={styles.closeButton} onClick={closeMenu}>×</button>
         </div>
         <button className={styles.menuItemButton}>ホーム</button>
