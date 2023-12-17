@@ -20,12 +20,17 @@ export type TopNavBarProps = {
   subjects: SideMenuProps["subjects"];
 };
 
-const TopNavBar = ({ subjects, userInitial }) => {
+const DEFAULT_LABEL = "ホーム";
+
+const TopNavBar = ({
+  subjects,
+  userInitial,
+  label = DEFAULT_LABEL,
+}: TopNavBarProps) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   const openSideMenu = () => setIsSideMenuOpen(true);
   const closeSideMenu = () => setIsSideMenuOpen(false);
-  const defaultLabel = "ホーム";
 
   return (
     <>
