@@ -17,6 +17,7 @@ export type TopNavBarProps = {
   userInitial?: string;
   label?: string;
   openSideMenu: () => void;
+  subjects: SideMenuProps["subjects"];
 };
 
 const TopNavBar = ({ subjects, userInitial }) => {
