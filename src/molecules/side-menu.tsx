@@ -7,6 +7,9 @@ export type SideMenuProps = {
     name: string;
     lastDate: string;
   }[];
+
+
+  
 };
 
 const SideMenu = ({ isOpen, closeMenu, subjects }: SideMenuProps) => {
