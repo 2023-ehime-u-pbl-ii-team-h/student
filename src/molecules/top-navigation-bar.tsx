@@ -9,7 +9,7 @@ import SideMenu, { SideMenuProps } from "../molecules/side-menu";
 import AccountMenu from './account-menu';
 
 const UserAvatar = ({ userInitial, onClick }: { userInitial?: string, onClick: () => void }) => (
-  <div className={accountMenuStyles.avatar} onClick={onClick}>
+  <div className={styles.avatar} onClick={onClick}>
     {userInitial ? userInitial : "👤"}
   </div>
 );
