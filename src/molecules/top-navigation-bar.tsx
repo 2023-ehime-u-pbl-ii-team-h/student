@@ -3,7 +3,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./top-navigation-bar.module.css";
-import accountMenuStyles from './account-menu.module.css';
 import { MdMenu } from "react-icons/md";
 import SideMenu, { SideMenuProps } from "../molecules/side-menu";
 import AccountMenu from './account-menu';
