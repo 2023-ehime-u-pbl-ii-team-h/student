@@ -7,7 +7,7 @@ const AccountMenu = ({ isLoggedIn, userName, userIcon, onLogout, onLogin }, ref)
     return (
       <div ref={ref} className={styles.accountMenu}>
         <div className={styles.accountInfo}>
-          <img src={userIcon} alt="User icon" className={styles.userIcon} />
+          <span className={styles.userIcon}>{userInitial}</span>
           <span className={styles.userName}>{userName}</span>
         </div>
         <button className={styles.menuItemButton} onClick={onLogout}>ログアウト</button>
