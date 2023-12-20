@@ -79,15 +79,14 @@ const TopNavBar = ({
         />
       )}
       {isAccountMenuOpen && (
-        <div ref={menuRef} className={accountMenuStyles.accountMenu}>
-          <AccountMenu
-            isLoggedIn={isLoggedIn}
-            userName={userName}
-            userIcon={userIcon}
-            onLogout={onLogout}
-            onLogin={onLogin}
-          />
-        </div>
+        <AccountMenu
+          ref={menuRef}
+          isLoggedIn={isLoggedIn}
+          userName={userName}
+          userIcon={userIcon}
+          onLogout={onLogout}
+          onLogin={onLogin}
+        />
       )}
     </>
   );
