@@ -2,7 +2,7 @@
 .accountMenu {
     background-color: var(--surface-container);
     color: var(--on-surface);
-    box-shadow: 0 4px 8px var(--shadow);
+    box-shadow: 2px 2px 8px color-mix(in srgb, currentcolor 25%, transparent);
   }
   
   .accountInfo {
