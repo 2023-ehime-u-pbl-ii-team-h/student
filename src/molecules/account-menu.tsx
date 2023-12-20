@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 const AccountMenu = ({ isLoggedIn, userName, userIcon, onLogout, onLogin }, ref) => {
   if (isLoggedIn) {
     return (
-      <div ref={ref} className={styles.accountMenu}>
+      <div ref={ref} className={`${styles.accountMenu} surface-container on-surface`}>
         <div className={styles.accountInfo}>
           <span className={styles.userIcon}>{userInitial}</span>
           <span className={styles.userName}>{userName}</span>
@@ -15,7 +15,7 @@ const AccountMenu = ({ isLoggedIn, userName, userIcon, onLogout, onLogin }, ref)
     );
   } else {
     return (
-      <div ref={ref} className={styles.accountMenu}>
+      <div ref={ref} className={`${styles.accountMenu} surface-container on-surface`}>
         <span className={styles.menuItemButton}>まだログインしていません</span>
         <button className={styles.menuItemButton} onClick={onLogin}>ログイン</button>
       </div>

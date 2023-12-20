@@ -1,4 +1,3 @@
-// TopNavBar.jsx
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
@@ -6,12 +5,15 @@ import styles from "./top-navigation-bar.module.css";
 import { MdMenu } from "react-icons/md";
 import SideMenu, { SideMenuProps } from "../molecules/side-menu";
 import AccountMenu from './account-menu';
+import { FaUser } from 'react-icons/fa';
+
 
 const UserAvatar = ({ userInitial, onClick }: { userInitial?: string, onClick: () => void }) => (
   <div className={styles.avatar} onClick={onClick}>
-    {userInitial ? userInitial : "👤"}
+    {userInitial ? userInitial : <FaUser />}
   </div>
 );
+
 
 const CurrentScreenLabel = ({ label }: { label: string }) => (
   <div className={styles.screenLabel}>{label}</div>
