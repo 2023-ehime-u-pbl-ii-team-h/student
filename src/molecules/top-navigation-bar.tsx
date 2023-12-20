@@ -45,7 +45,7 @@ const TopNavBar = ({
   const closeSideMenu = () => setIsSideMenuOpen(false);
 
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
-  const toggleAccountMenu = () => setIsAccountMenuOpen(!isAccountMenuOpen);
+  const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
   
   const menuRef = useRef(null);
 
