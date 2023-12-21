@@ -1,20 +1,8 @@
 import styles from './account-menu.module.css';
 
-import { Ref, forwardRef } from "react";
+import { forwardRef } from "react";
 
-export interface AccountMenuProps {
-  user: {
-    name: string;
-    initials: string;
-  } | null;
-  onLogout: () => void;
-  onLogin: () => void;
-}
-
-const AccountMenu = (
-  { user, onLogout, onLogin }: AccountMenuProps,
-  ref: Ref<HTMLDivElement>,
-) => {
+const AccountMenu = ({ isLoggedIn, userName, userIcon, onLogout, onLogin }, ref) => {
   if (isLoggedIn) {
     return (
       <div ref={ref} className={`${styles.accountMenu} surface-container on-surface-text`}>
@@ -27,7 +15,7 @@ const AccountMenu = (
     );
   } else {
     return (
-      <div ref={ref} className={`${styles.accountMenu} surface-container on-surface`}>
+      <div ref={ref} className={`${styles.accountMenu} surface-container on-surface-text`}>
         <span className={styles.menuItemButton}>まだログインしていません</span>
         <button className={styles.menuItemButton} onClick={onLogin}>ログイン</button>
       </div>
