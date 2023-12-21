@@ -17,7 +17,7 @@ const AccountMenu = (
 ) => {
   if (isLoggedIn) {
     return (
-      <div ref={ref} className={`${styles.accountMenu} surface-container on-surface`}>
+      <div ref={ref} className={`${styles.accountMenu} surface-container on-surface-text`}>
         <div className={styles.accountInfo}>
           <span className={styles.userIcon}>{userInitial}</span>
           <span className={styles.userName}>{userName}</span>
