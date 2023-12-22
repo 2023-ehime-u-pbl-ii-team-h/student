@@ -49,11 +49,11 @@ const TopNavBar = ({
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
   
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as HTMLElement)) {
         setIsAccountMenuOpen(false);
       }
     };
