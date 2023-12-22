@@ -15,12 +15,12 @@ const AccountMenu = (
   { user, onLogout, onLogin }: AccountMenuProps,
   ref: Ref<HTMLDivElement>,
 ) => {
-  if (isLoggedIn) {
+  if (user) {
     return (
       <div ref={ref} className={`${styles.accountMenu} surface-container on-surface-text`}>
         <div className={styles.accountInfo}>
-          <span className={styles.userIcon}>{userInitial}</span>
-          <span className={styles.userName}>{userName}</span>
+          <span className={styles.userIcon}>{user.initials}</span>
+          <span className={styles.userName}>{user.name}</span>
         </div>
         <button className={styles.menuItemButton} onClick={onLogout}>ログアウト</button>
       </div>
