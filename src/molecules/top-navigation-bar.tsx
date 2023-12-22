@@ -82,9 +82,7 @@ const TopNavBar = ({
       {isAccountMenuOpen && (
         <AccountMenu
           ref={menuRef}
-          isLoggedIn={isLoggedIn}
-          userName={userName}
-          userIcon={userIcon}
+          user={null}
           onLogout={onLogout}
           onLogin={onLogin}
         />
