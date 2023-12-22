@@ -1,8 +1,20 @@
 import styles from './account-menu.module.css';
 
-import { forwardRef } from "react";
+import { Ref, forwardRef } from "react";
 
-const AccountMenu = ({ isLoggedIn, userName, userIcon, onLogout, onLogin }, ref) => {
+export interface AccountMenuProps {
+  user: {
+    name: string;
+    initials: string;
+  } | null;
+  onLogout: () => void;
+  onLogin: () => void;
+}
+
+const AccountMenu = (
+  { user, onLogout, onLogin }: AccountMenuProps,
+  ref: Ref<HTMLDivElement>,
+) => {
   if (isLoggedIn) {
     return (
       <div ref={ref} className={`${styles.accountMenu} surface-container on-surface-text`}>
