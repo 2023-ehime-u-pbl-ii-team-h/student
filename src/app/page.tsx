@@ -4,7 +4,26 @@ import AttendButton from "../organisms/attend-button";
 import TopNavBar from "../molecules/top-navigation-bar";
 import AttendStatus from "../organisms/attend-status";
 import SideMenu from "../molecules/side-menu";
+import { useAttendAction, AttendResult } from "../commands/attend-action";
+import { AttendButtonState } from "../organisms/attend-button";
 
+const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
+  READY: "ENABLED",
+  AWAITING: "ENABLED", // FIXME: AttendButtonState に "DISABLED" を追加すべき
+  SUCCESS: "DONE",
+  FAILURE: "OVERTIME",
+};
+function attendApp() {
+  // useAttendAction フックを使用して状態とアクションを管理
+  const [attendResult, submitAttendAction] = useAttendAction();
+  const buttonState = BUTTON_STATE_MAP[attendResult["type"]];
+
+  return (
+    <div>
+      <AttendButton state={buttonState} onClick={submitAttendAction} />
+    </div>
+  );
+}
 export default function Home() {
   const attendState = "ENABLED";
 
