@@ -12,7 +12,8 @@ export function useLogin(): LoginInfo {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    fetch("EPH-60のエンドポイントURL", { signal })
+    const ME_ENDPOINT = "https://backend.mikuroxina.workers.dev/me";
+    fetch(ME_ENDPOINT, { signal })
       .then(response => response.json())
       .then(data => {
         if (data.isLoggedIn) {
