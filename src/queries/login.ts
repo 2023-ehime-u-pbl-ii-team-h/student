@@ -13,16 +13,19 @@ export function useLogin(): LoginInfo {
     const signal = controller.signal;
 
     const ME_ENDPOINT = "https://backend.mikuroxina.workers.dev/me";
-    fetch(ME_ENDPOINT, { signal })
-      .then(response => response.json())
-      .then(data => {
-        if (data.isLoggedIn) {
-          setLoginInfo({ type: 'LOGGED_IN', name: data.name });
-        } else {
+    (async () => {
+      try {
+        const response = await fetch(ME_ENDPOINT, { signal });
+        if (!response.ok) {
           setLoginInfo({ type: 'NOT_LOGGED_IN' });
+          return;
         }
-      })
-      .catch(() => setLoginInfo({ type: 'NOT_LOGGED_IN' }));
+        const { name } = await response.json();      
+        setLoginInfo({ type: 'LOGGED_IN', name });
+      } catch {
+        setLoginInfo({ type: 'NOT_LOGGED_IN' });
+      }
+    })();
 
     return () => {
       controller.abort();
