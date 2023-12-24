@@ -67,11 +67,9 @@ const TopNavBar = ({ userInitial, label = DEFAULT_LABEL, subjects }: TopNavBarPr
         />
       )}
       {isAccountMenuOpen && (
-        <div ref={menuRef}>
         <AccountMenu
-          isLoggedIn={user !== null}
-          userName={user?.name}
-          userInitial={user?.initials}
+          ref={menuRef}
+          user={user}
           onLogout={() => console.log('ログアウト処理')}
           onLogin={() => console.log('ログイン処理')}
         />
