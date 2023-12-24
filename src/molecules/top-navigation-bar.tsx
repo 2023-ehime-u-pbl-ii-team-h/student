@@ -4,16 +4,20 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./top-navigation-bar.module.css";
 import { MdMenu } from "react-icons/md";
 import SideMenu, { SideMenuProps } from "../molecules/side-menu";
-import AccountMenu from './account-menu';
-import { FaUser } from 'react-icons/fa';
+import AccountMenu from "./account-menu";
+import { FaUser } from "react-icons/fa";
 
-
-const UserAvatar = ({ userInitial, onClick }: { userInitial?: string, onClick: () => void }) => (
+const UserAvatar = ({
+  userInitial,
+  onClick,
+}: {
+  userInitial?: string;
+  onClick: () => void;
+}) => (
   <div className={styles.avatar} onClick={onClick}>
     {userInitial ? userInitial : <FaUser />}
   </div>
 );
-
 
 const CurrentScreenLabel = ({ label }: { label: string }) => (
   <div className={styles.screenLabel}>{label}</div>
@@ -27,20 +31,27 @@ export type TopNavBarProps = {
 
 const DEFAULT_LABEL = "ホーム";
 
-const TopNavBar = ({ userInitial, label = DEFAULT_LABEL, subjects }: TopNavBarProps) => {
+const TopNavBar = ({
+  userInitial,
+  label = DEFAULT_LABEL,
+  subjects,
+}: TopNavBarProps) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const openSideMenu = () => setIsSideMenuOpen(true);
   const closeSideMenu = () => setIsSideMenuOpen(false);
 
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
-  
+
   const menuRef = useRef<HTMLDivElement>(null);
-  const user: { name: string; initials: string; } | null = null;
+  const user: { name: string; initials: string } | null = null;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as HTMLElement)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as HTMLElement)
+      ) {
         setIsAccountMenuOpen(false);
       }
     };
@@ -51,7 +62,7 @@ const TopNavBar = ({ userInitial, label = DEFAULT_LABEL, subjects }: TopNavBarPr
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
+
   return (
     <>
       <div className={`${styles.topNavBar} surface on-surface-text`}>
@@ -70,8 +81,8 @@ const TopNavBar = ({ userInitial, label = DEFAULT_LABEL, subjects }: TopNavBarPr
         <AccountMenu
           ref={menuRef}
           user={user}
-          onLogout={() => console.log('ログアウト処理')}
-          onLogin={() => console.log('ログイン処理')}
+          onLogout={() => console.log("ログアウト処理")}
+          onLogin={() => console.log("ログイン処理")}
         />
       )}
     </>
