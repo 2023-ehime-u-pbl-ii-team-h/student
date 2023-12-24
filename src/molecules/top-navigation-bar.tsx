@@ -73,7 +73,6 @@ const TopNavBar = ({ userInitial, label = DEFAULT_LABEL, subjects }: TopNavBarPr
           onLogout={() => console.log('ログアウト処理')}
           onLogin={() => console.log('ログイン処理')}
         />
-      </div>
       )}
     </>
   );
