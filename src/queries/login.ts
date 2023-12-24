@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export type LoginInfo =
-  | { type: 'LOADING' }
-  | { type: 'NOT_LOGGED_IN' }
-  | { type: 'LOGGED_IN'; name: string };
+  | { type: "LOADING" }
+  | { type: "NOT_LOGGED_IN" }
+  | { type: "LOGGED_IN"; name: string };
 
 export function useLogin(): LoginInfo {
-  const [loginInfo, setLoginInfo] = useState<LoginInfo>({ type: 'LOADING' });
+  const [loginInfo, setLoginInfo] = useState<LoginInfo>({ type: "LOADING" });
 
   useEffect(() => {
     const controller = new AbortController();
@@ -17,13 +17,13 @@ export function useLogin(): LoginInfo {
       try {
         const response = await fetch(ME_ENDPOINT, { signal });
         if (!response.ok) {
-          setLoginInfo({ type: 'NOT_LOGGED_IN' });
+          setLoginInfo({ type: "NOT_LOGGED_IN" });
           return;
         }
-        const { name } = await response.json();      
-        setLoginInfo({ type: 'LOGGED_IN', name });
+        const { name } = await response.json();
+        setLoginInfo({ type: "LOGGED_IN", name });
       } catch {
-        setLoginInfo({ type: 'NOT_LOGGED_IN' });
+        setLoginInfo({ type: "NOT_LOGGED_IN" });
       }
     })();
 
