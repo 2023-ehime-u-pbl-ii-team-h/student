@@ -13,20 +13,10 @@ const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   SUCCESS: "DONE",
   FAILURE: "OVERTIME",
 };
-function attendApp() {
-  // useAttendAction フックを使用して状態とアクションを管理
-  const [attendResult, submitAttendAction] = useAttendAction();
-  const buttonState = BUTTON_STATE_MAP[attendResult["type"]];
 
-  return (
-    <div>
-      <AttendButton state={buttonState} onClick={submitAttendAction} />
-    </div>
-  );
-}
 export default function Home() {
-  const attendState = "ENABLED";
-
+  const [attendResult, submitAttendAction] = useAttendAction();
+  const attendState = BUTTON_STATE_MAP[attendResult["type"]];
   const subjects = [
     { name: "PBL演習", lastDate: "2023-01-01" },
     { name: "サイバーセキュリティ", lastDate: "2023-01-02" },
@@ -36,7 +26,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <TopNavBar subjects={subjects} />
-      <AttendButton state={attendState} />
+      <AttendButton state={attendState} onClick={submitAttendAction} />
       <AttendStatus attendanceCount={14} tardinessCount={13} absenceCount={2} />
     </main>
   );
