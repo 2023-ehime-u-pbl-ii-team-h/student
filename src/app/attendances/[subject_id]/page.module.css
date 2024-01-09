@@ -1,0 +1,17 @@
+.attendanceStatus {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 20rem;
+    margin: 0.4rem auto;
+    padding: 0.2rem;
+  }
+  
+  .icon {
+
+  }
+  
+  .lectureNumber, .date {
+    
+  }
+  

@@ -1,4 +1,8 @@
+export const config = { runtime: 'client' };
+
+import React from 'react';
 import styles from "./side-menu.module.css";
+import Link from 'next/link';
 
 export type SideMenuProps = {
   isOpen: boolean;
@@ -22,23 +26,26 @@ const SideMenu = ({ isOpen, closeMenu, subjects }: SideMenuProps) => {
             ×
           </button>
         </div>
+
         <button className={`${styles.menuItemButton} on-background-text`}>
           <div className={styles.stateLayer}>ホーム</div>
         </button>
+
         <div className={styles.subjectList}>
           {subjects &&
-            subjects.map((subject, index) => (
-              <button
-                key={index}
-                className={`${styles.menuItemButton} secondary-container on-secondary-container-text`}
-              >
-                <div className={styles.stateLayer}>
-                  <div className={styles.subjectName}>{subject.name}</div>
-                  <div className={styles.lastDate}>{subject.lastDate}</div>
-                </div>
-              </button>
-            ))}
+            subjects.map((subject) => (
+              <Link key={subject.id} href={`/attendances/${subject.id}`}>
+                <a className={styles.menuItemLink} onClick={closeMenu}>
+                  <div className={styles.stateLayer}>
+                    <div className={styles.subjectName}>{subject.name}</div>
+                    <div className={styles.lastDate}>{subject.lastDate}</div>
+                  </div>
+                </a>
+              </Link>
+            ))
+          }
         </div>
+
         <button className={`${styles.menuItemButton} on-background-text`}>
           <div className={styles.stateLayer}>科目を追加</div>
         </button>
