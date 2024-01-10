@@ -10,7 +10,7 @@ import { AttendButtonState } from "../organisms/attend-button";
 
 const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   READY: "ENABLED",
-  AWAITING: "DISABLED", // FIXME: AttendButtonState に "DISABLED" を追加すべき
+  AWAITING: "DISABLED",
   SUCCESS: "DONE",
   FAILURE: "OVERTIME",
 };
