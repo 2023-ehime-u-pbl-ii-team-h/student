@@ -6,7 +6,7 @@ import { AttendOutlet } from "@/organisms/attend-outlet";
 
 const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   READY: "ENABLED",
-  AWAITING: "ENABLED", // FIXME: AttendButtonState に "DISABLED" を追加すべき
+  AWAITING: "DISABLED",
   SUCCESS: "DONE",
   FAILURE: "OVERTIME",
 };
