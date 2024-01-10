@@ -6,6 +6,7 @@
   border-radius: 9999px;
   height: 2.5rem;
   user-select: none;
+  border: 0;
 }
 
 .button > div {
