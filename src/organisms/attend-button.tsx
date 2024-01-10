@@ -35,7 +35,7 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
       icon: <RxCross1 className={aButton.icon} />,
     },
     DISABLED: {
-      label: "出席申請中",
+      label: "…",
       btnClass: "done",
       icon: null,
     },
