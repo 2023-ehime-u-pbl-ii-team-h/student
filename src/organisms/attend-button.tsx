@@ -3,7 +3,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { ReactNode } from "react";
 
-export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME" |"DISABLED";
+export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME" | "DISABLED";
 
 export type AttendButtonProps = {
   state: AttendButtonState;
