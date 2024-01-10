@@ -3,7 +3,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { ReactNode } from "react";
 
-export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME";
+export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME" |"DISABLED";
 
 export type AttendButtonProps = {
   state: AttendButtonState;
@@ -33,6 +33,11 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
       label: "申請時間外",
       btnClass: "overtime",
       icon: <RxCross1 className={aButton.icon} />,
+    },
+    DISABLED: {
+      label: "…",
+      btnClass: "done",
+      icon: null,
     },
   };
   const { label, btnClass, icon } = variants[state];
