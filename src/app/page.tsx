@@ -16,7 +16,7 @@ const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
 
 export default function Home() {
   const [attendResult, submitAttendAction] = useAttendAction();
-  const attendState = BUTTON_STATE_MAP[attendResult["type"]];
+  const attendState = BUTTON_STATE_MAP[attendResult.type];
   const subjects = [
     { name: "PBL演習", lastDate: "2023-01-01" },
     { name: "サイバーセキュリティ", lastDate: "2023-01-02" },
