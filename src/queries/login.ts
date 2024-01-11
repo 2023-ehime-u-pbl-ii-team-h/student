@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export type LoginInfo =
   | { type: "LOADING" }
   | { type: "NOT_LOGGED_IN" }
-  | { type: "LOGGED_IN"; name: string, registrations: string };
+  | { type: "LOGGED_IN"; name: string; registrations: readonly string[] };
 
 export function useLogin(): LoginInfo {
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({ type: "LOADING" });
@@ -20,8 +20,7 @@ export function useLogin(): LoginInfo {
           setLoginInfo({ type: "NOT_LOGGED_IN" });
           return;
         }
-        const { name } = await response.json();
-        const { registrations } = await response.json();
+        const { name, registrations } = await response.json();
         setLoginInfo({ type: "LOGGED_IN", name, registrations });
       } catch {
         setLoginInfo({ type: "NOT_LOGGED_IN" });
