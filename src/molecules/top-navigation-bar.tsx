@@ -2,22 +2,17 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./top-navigation-bar.module.css";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdPerson } from "react-icons/md";
 import SideMenu from "../molecules/side-menu";
 import AccountMenu from "./account-menu";
-import { FaUser } from "react-icons/fa";
+import { StandardIconButton } from "@/atoms/icon-button";
 
-const UserAvatar = ({
-  userInitial,
-  onClick,
-}: {
-  userInitial?: string;
-  onClick: () => void;
-}) => (
-  <div className={styles.avatar} onClick={onClick}>
-    {userInitial ? userInitial : <FaUser />}
-  </div>
-);
+const UserAvatar = ({ userInitial }: { userInitial?: string }) =>
+  userInitial ? (
+    <div className={styles.avatar}>{userInitial}</div>
+  ) : (
+    <MdPerson />
+  );
 
 const CurrentScreenLabel = ({ label }: { label: string }) => (
   <div className={styles.screenLabel}>{label}</div>
@@ -61,9 +56,17 @@ const TopNavBar = ({ userInitial, label = DEFAULT_LABEL }: TopNavBarProps) => {
   return (
     <>
       <div className={`${styles.topNavBar} surface on-surface-text`}>
-        <MdMenu className={styles.menuButton} onClick={openSideMenu} />
+        <StandardIconButton
+          alt="サイドメニューを開く"
+          icon={<MdMenu />}
+          onClick={openSideMenu}
+        />
         <CurrentScreenLabel label={label} />
-        <UserAvatar userInitial={userInitial} onClick={toggleAccountMenu} />
+        <StandardIconButton
+          alt=""
+          icon={<UserAvatar userInitial={userInitial} />}
+          onClick={toggleAccountMenu}
+        />
       </div>
       {isSideMenuOpen && (
         <SideMenu isOpen={isSideMenuOpen} closeMenu={closeSideMenu} />

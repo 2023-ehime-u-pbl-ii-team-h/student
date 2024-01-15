@@ -1,5 +1,7 @@
 import { useSubjects } from "@/queries/subjects";
 import styles from "./side-menu.module.css";
+import { StandardIconButton } from "@/atoms/icon-button";
+import { MdClose } from "react-icons/md";
 
 export type SideMenuProps = {
   isOpen: boolean;
@@ -17,9 +19,11 @@ const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
       <div className={`${styles.sideMenu} surface`} data-open={isOpen}>
         <div className={`${styles.topBar} on-surface-text`}>
           <span className="title-small">出席確認システム</span>
-          <button className={styles.closeButton} onClick={closeMenu}>
-            ×
-          </button>
+          <StandardIconButton
+            icon={<MdClose />}
+            alt="メニューを閉じる"
+            onClick={closeMenu}
+          />
         </div>
         <button className={`${styles.menuItemButton} on-background-text`}>
           <div className={styles.stateLayer}>ホーム</div>
