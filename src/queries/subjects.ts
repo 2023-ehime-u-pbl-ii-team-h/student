@@ -13,19 +13,17 @@ export function useSubjects(): Subject[] | null {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    const SUBJECTS_ENDPOINT = "https://backend.mikuroxina.workers.dev/me/subjects";
+    const SUBJECTS_ENDPOINT =
+      "https://backend.mikuroxina.workers.dev/me/subjects";
     (async () => {
       try {
         const response = await fetch(SUBJECTS_ENDPOINT, { signal });
         if (!response.ok) {
-          setSubjects(null);
           return;
         }
         const fetchedSubjects: Subject[] = await response.json();
         setSubjects(fetchedSubjects);
-      } catch {
-        setSubjects(null);
-      }
+      } catch {}
     })();
 
     return () => {
