@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Suspense
-        fallback={<AttendOutlet attendState="DISABLED" subjects={[]} />}
+        fallback={<AttendOutlet attendState="DISABLED"  />}
       >
         <Content />
       </Suspense>
