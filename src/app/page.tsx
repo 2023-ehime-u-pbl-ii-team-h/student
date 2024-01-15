@@ -6,9 +6,7 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Suspense
-        fallback={<AttendOutlet attendState="DISABLED" subjects={[]} />}
-      >
+      <Suspense fallback={<AttendOutlet attendState="DISABLED" />}>
         <Content />
       </Suspense>
     </main>
