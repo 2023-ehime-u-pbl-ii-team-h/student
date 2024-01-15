@@ -2,6 +2,7 @@ import { useSubjects } from "@/queries/subjects";
 import styles from "./side-menu.module.css";
 import { StandardIconButton } from "@/atoms/icon-button";
 import { MdClose } from "react-icons/md";
+import Link from "next/link";
 
 export type SideMenuProps = {
   isOpen: boolean;
@@ -42,9 +43,12 @@ const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
               </button>
             ))}
         </div>
-        <button className={`${styles.menuItemButton} on-background-text`}>
+        <Link
+          href="/add-subject"
+          className={`${styles.menuItemButton} on-background-text`}
+        >
           <div className={styles.stateLayer}>科目を追加</div>
-        </button>
+        </Link>
       </div>
     </>
   );
