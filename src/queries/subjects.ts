@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export interface Subject {
+  id: string;
   name: string;
   lastDate: string;
 }
