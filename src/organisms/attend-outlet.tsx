@@ -1,4 +1,3 @@
-import TopNavBar from "@/molecules/top-navigation-bar";
 import AttendButton, { AttendButtonState } from "./attend-button";
 import AttendStatus, { AttendanceProps } from "./attend-status";
 
@@ -15,7 +14,6 @@ export function AttendOutlet({
 }: AttendOutletProps): JSX.Element {
   return (
     <>
-      <TopNavBar />
       <AttendButton state={attendState} onClick={onAttend} />
       {attendance && <AttendStatus {...attendance} />}
     </>

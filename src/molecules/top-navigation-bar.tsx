@@ -7,9 +7,9 @@ import SideMenu from "../molecules/side-menu";
 import AccountMenu from "./account-menu";
 import { StandardIconButton } from "@/atoms/icon-button";
 
-const UserAvatar = ({ userInitial }: { userInitial?: string }) =>
+const UserAvatar = ({ userInitial }: { userInitial: string }) =>
   userInitial ? (
-    <div className={styles.avatar}>{userInitial}</div>
+    <div className={`label-large ${styles.avatar}`}>{userInitial}</div>
   ) : (
     <MdPerson />
   );
@@ -19,13 +19,12 @@ const CurrentScreenLabel = ({ label }: { label: string }) => (
 );
 
 export type TopNavBarProps = {
-  userInitial?: string;
   label?: string;
 };
 
 const DEFAULT_LABEL = "ホーム";
 
-const TopNavBar = ({ userInitial, label = DEFAULT_LABEL }: TopNavBarProps) => {
+const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const openSideMenu = () => setIsSideMenuOpen(true);
   const closeSideMenu = () => setIsSideMenuOpen(false);
@@ -34,7 +33,10 @@ const TopNavBar = ({ userInitial, label = DEFAULT_LABEL }: TopNavBarProps) => {
   const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
 
   const menuRef = useRef<HTMLDivElement>(null);
-  const user: { name: string; initials: string } | null = null;
+  const user: { name: string; initials: string } | null = {
+    name: "TEST Student",
+    initials: "TS",
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,7 +66,7 @@ const TopNavBar = ({ userInitial, label = DEFAULT_LABEL }: TopNavBarProps) => {
         <CurrentScreenLabel label={label} />
         <StandardIconButton
           alt=""
-          icon={<UserAvatar userInitial={userInitial} />}
+          icon={<UserAvatar userInitial={user?.initials} />}
           onClick={toggleAccountMenu}
         />
       </div>
