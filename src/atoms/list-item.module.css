@@ -1,0 +1,41 @@
+.listItem {
+  position: relative;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 16px;
+}
+.listItem[condition="MULTI_LINES"] {
+  height: 4.5rem;
+  align-items: flex-start;
+}
+.listItem:not([data-disabled="true"]) {
+  cursor: pointer;
+}
+.listItem[data-disabled="true"] {
+  opacity: 0.38;
+}
+
+.stateLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.listItem:not([data-disabled="true"]):hover > .stateLayer {
+  background: color-mix(in srgb, currentcolor 8%, transparent);
+}
+.listItem:not([data-disabled="true"]):focus-visible > .stateLayer,
+.listItem:not([data-disabled="true"]):active > .stateLayer {
+  background: color-mix(in srgb, currentcolor 10%, transparent);
+}
+
+.leadingItem {
+  width: 24px;
+  height: 24px;
+}
+.leadingItem:not(:disabled) {
+  cursor: pointer;
+}
