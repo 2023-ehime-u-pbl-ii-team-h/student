@@ -14,11 +14,6 @@ const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
 export function Content(): JSX.Element {
   const [attendResult, submitAttendAction] = useAttendAction();
   const attendState = BUTTON_STATE_MAP[attendResult.type];
-  const subjects = [
-    { name: "PBL演習", lastDate: "2023-01-01" },
-    { name: "サイバーセキュリティ", lastDate: "2023-01-02" },
-    // その他の科目...
-  ];
 
   return (
     <AttendOutlet
@@ -28,7 +23,7 @@ export function Content(): JSX.Element {
         tardinessCount: 13,
         absenceCount: 2,
       }}
-      {...{ attendState, subjects }}
+      {...{ attendState }}
     />
   );
 }

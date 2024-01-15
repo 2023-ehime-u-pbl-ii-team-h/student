@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./top-navigation-bar.module.css";
 import { MdMenu } from "react-icons/md";
-import SideMenu, { SideMenuProps } from "../molecules/side-menu";
+import SideMenu from "../molecules/side-menu";
 import AccountMenu from "./account-menu";
 import { FaUser } from "react-icons/fa";
 
@@ -26,16 +26,11 @@ const CurrentScreenLabel = ({ label }: { label: string }) => (
 export type TopNavBarProps = {
   userInitial?: string;
   label?: string;
-  subjects: SideMenuProps["subjects"];
 };
 
 const DEFAULT_LABEL = "ホーム";
 
-const TopNavBar = ({
-  userInitial,
-  label = DEFAULT_LABEL,
-  subjects,
-}: TopNavBarProps) => {
+const TopNavBar = ({ userInitial, label = DEFAULT_LABEL }: TopNavBarProps) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const openSideMenu = () => setIsSideMenuOpen(true);
   const closeSideMenu = () => setIsSideMenuOpen(false);
@@ -71,11 +66,7 @@ const TopNavBar = ({
         <UserAvatar userInitial={userInitial} onClick={toggleAccountMenu} />
       </div>
       {isSideMenuOpen && (
-        <SideMenu
-          isOpen={isSideMenuOpen}
-          closeMenu={closeSideMenu}
-          subjects={subjects}
-        />
+        <SideMenu isOpen={isSideMenuOpen} closeMenu={closeSideMenu} />
       )}
       {isAccountMenuOpen && (
         <AccountMenu

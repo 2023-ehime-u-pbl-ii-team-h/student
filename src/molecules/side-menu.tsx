@@ -1,15 +1,14 @@
+import { useSubjects } from "@/queries/subjects";
 import styles from "./side-menu.module.css";
 
 export type SideMenuProps = {
   isOpen: boolean;
   closeMenu: () => void;
-  subjects: readonly {
-    name: string;
-    lastDate: string;
-  }[];
 };
 
-const SideMenu = ({ isOpen, closeMenu, subjects }: SideMenuProps) => {
+const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
+  const subjects = useSubjects();
+
   return (
     <>
       {isOpen && (
