@@ -12,6 +12,5 @@ type Story = StoryObj<typeof TopNavBar>;
 export const Normal: Story = {
   args: {
     label: "ホーム",
-    userInitial: "DJ",
   },
 };
