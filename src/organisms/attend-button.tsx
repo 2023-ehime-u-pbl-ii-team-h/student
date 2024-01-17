@@ -2,7 +2,7 @@ import aButton from "./attend-button.module.css";
 import { BsCheckLg } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { ReactNode } from "react";
-import { FilledButton } from "@/atoms/button";
+import { FilledButton } from "../atoms/button";
 
 export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME" | "DISABLED";
 

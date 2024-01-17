@@ -1,6 +1,6 @@
-import { useSubjects } from "@/queries/subjects";
+import { useSubjects } from "../queries/subjects";
 import styles from "./side-menu.module.css";
-import { StandardIconButton } from "@/atoms/icon-button";
+import { StandardIconButton } from "../atoms/icon-button";
 import { MdClose } from "react-icons/md";
 import Link from "next/link";
 
