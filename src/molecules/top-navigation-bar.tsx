@@ -5,7 +5,7 @@ import styles from "./top-navigation-bar.module.css";
 import { MdMenu, MdPerson } from "react-icons/md";
 import SideMenu from "../molecules/side-menu";
 import AccountMenu from "./account-menu";
-import { StandardIconButton } from "@/atoms/icon-button";
+import { StandardIconButton } from "../atoms/icon-button";
 
 const UserAvatar = ({ userInitial }: { userInitial: string }) =>
   userInitial ? (
