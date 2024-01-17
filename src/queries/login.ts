@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_ROOT } from "./config";
 
 export type LoginInfo =
   | { type: "LOADING" }
@@ -12,7 +13,7 @@ export function useLogin(): LoginInfo {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    const ME_ENDPOINT = "https://backend.mikuroxina.workers.dev/me";
+    const ME_ENDPOINT = `${API_ROOT}/me`;
     (async () => {
       try {
         const response = await fetch(ME_ENDPOINT, { signal });

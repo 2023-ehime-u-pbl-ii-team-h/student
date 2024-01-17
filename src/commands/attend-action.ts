@@ -1,6 +1,7 @@
+import { API_ROOT } from "@/queries/config";
 import { useState, useCallback } from "react";
 
-const ATTEND_API_ENDPOINT = "https://backend.mikuroxina.workers.dev/attendance";
+const ATTEND_API_ENDPOINT = `${API_ROOT}/attendance`;
 
 export type AttendResult =
   | { type: "READY" }

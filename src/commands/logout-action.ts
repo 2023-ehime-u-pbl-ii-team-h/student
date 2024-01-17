@@ -1,4 +1,6 @@
-const BACKEND_LOGOUT_ENDPOINT = "https://backend.mikuroxina.workers.dev/logout";
+import { API_ROOT } from "@/queries/config";
+
+const BACKEND_LOGOUT_ENDPOINT = `${API_ROOT}/logout`;
 
 export const logoutAndReload = async () => {
   try {

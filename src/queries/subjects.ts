@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_ROOT } from "./config";
 
 export interface Subject {
   id: string;
@@ -13,8 +14,7 @@ export function useSubjects(): Subject[] | null {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    const SUBJECTS_ENDPOINT =
-      "https://backend.mikuroxina.workers.dev/me/subjects";
+    const SUBJECTS_ENDPOINT = `${API_ROOT}/me/subjects`;
     (async () => {
       try {
         const response = await fetch(SUBJECTS_ENDPOINT, { signal });
