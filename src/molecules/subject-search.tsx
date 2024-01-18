@@ -32,8 +32,7 @@ export function SubjectSearch({
       <input
         className={`body-large ${styles.searchInput}`}
         placeholder="科目名で検索…"
-        value={input}
-        onInput={(e) => setInput(e.currentTarget.value)}
+        onChange={(e) => setInput(e.currentTarget.value)}
       />
       {resultItems && (
         <>
