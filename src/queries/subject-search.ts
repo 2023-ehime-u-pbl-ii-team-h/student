@@ -16,19 +16,28 @@ export function useSubjectSearch(input: string): readonly Subject[] | null {
     const params = new URLSearchParams({
       name: input,
     });
-    const res = await fetch(`${API_ROOT}/subjects?` + params, {
-      signal: aborter.current.signal,
-    });
-    if (!res.ok) {
-      console.error(await res.text());
+    let payload;
+    try {
+      const res = await fetch(`${API_ROOT}/subjects?` + params, {
+        signal: aborter.current.signal,
+      });
+      if (res.status === 404) {
+        setSubjects([]);
+        return;
+      }
+      if (!res.ok) {
+        throw new Error(await res.text());
+      }
+      payload = (await res.json()) as {
+        id: string;
+        name: string;
+        next_board_end: string | null;
+        assigned: string[];
+      }[];
+    } catch (error) {
+      console.error(error);
       return;
     }
-    const payload = (await res.json()) as {
-      id: string;
-      name: string;
-      next_board_end: string | null;
-      assigned: string[];
-    }[];
     setSubjects(
       payload.map(({ id, name, next_board_end }) => ({
         id,
