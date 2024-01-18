@@ -2,6 +2,7 @@ import { RadioListItem } from "@/atoms/list-item";
 import styles from "./subject-search.module.css";
 import { useState } from "react";
 import { Subject } from "@/queries/subjects";
+import { useSubjectSearch } from "@/queries/subject-search";
 
 export type SubjectSearchProps = {
   onSelectItem: (subject: Subject) => void;
@@ -10,17 +11,14 @@ export type SubjectSearchProps = {
 export function SubjectSearch({
   onSelectItem,
 }: SubjectSearchProps): JSX.Element {
-  const resultItems = [
-    { id: "sub01", name: "xxxx", lastDate: "2024-01-01" },
-    { id: "sub02", name: "xxxx", lastDate: "2024-01-01" },
-    { id: "sub03", name: "xxxx", lastDate: "2024-01-01" },
-    { id: "sub04", name: "xxxx", lastDate: "2024-01-01" },
-    { id: "sub05", name: "xxxx", lastDate: "2024-01-01" },
-  ];
-
+  const [input, setInput] = useState("");
+  const resultItems = useSubjectSearch(input);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   function onSelect(selectedId: string) {
+    if (!resultItems) {
+      return;
+    }
     setSelectedId((currentId) =>
       selectedId === currentId ? null : selectedId,
     );
@@ -34,20 +32,35 @@ export function SubjectSearch({
       <input
         className={`body-large ${styles.searchInput}`}
         placeholder="科目名で検索…"
+        value={input}
+        onInput={(e) => setInput(e.currentTarget.value)}
       />
-      <hr />
-      <div className={styles.searchResultMenu}>
-        {resultItems.map(({ id, name, lastDate }) => (
-          <RadioListItem
-            key={id}
-            groupName="search_choice"
-            headline={name}
-            supportingText={lastDate}
-            selected={selectedId === id}
-            onClick={() => onSelect(id)}
-          />
-        ))}
-      </div>
+      {resultItems && (
+        <>
+          <hr />
+          <div className={styles.searchResultMenu}>
+            {resultItems.length === 0 ? (
+              <div>
+                <p className="body-medium">
+                  該当する科目が見つかりませんでした
+                </p>
+                <p className="body-small">検索結果を変えてみましょう</p>
+              </div>
+            ) : (
+              resultItems.map(({ id, name, lastDate }) => (
+                <RadioListItem
+                  key={id}
+                  groupName="search_choice"
+                  headline={name}
+                  supportingText={lastDate}
+                  selected={selectedId === id}
+                  onClick={() => onSelect(id)}
+                />
+              ))
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

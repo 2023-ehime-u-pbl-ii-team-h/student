@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { API_ROOT } from "./config";
-
-export type Subject = {
-  id: string;
-  name: string;
-  next_board_end: string | null;
-  assigned: string[];
-};
+import { Subject } from "./subjects";
 
 const BLOCK_DURATION = 500;
 
@@ -29,8 +23,19 @@ export function useSubjectSearch(input: string): readonly Subject[] | null {
       console.error(await res.text());
       return;
     }
-    const payload = await res.json();
-    setSubjects(payload as Subject[]);
+    const payload = (await res.json()) as {
+      id: string;
+      name: string;
+      next_board_end: string | null;
+      assigned: string[];
+    }[];
+    setSubjects(
+      payload.map(({ id, name, next_board_end }) => ({
+        id,
+        name,
+        lastDate: next_board_end ?? "",
+      })),
+    );
   }, BLOCK_DURATION);
 
   useEffect(() => {
