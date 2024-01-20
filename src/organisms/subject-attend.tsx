@@ -2,18 +2,16 @@ import React, { useEffect, useState } from 'react';
 import AttendanceStatus from '../molecules/attendance-status';
 import { API_ROOT } from "@/queries/config";
 
-export type SubjectAttendanceProps = {
-  subjectId: string;
-};
-
 type AttendancesSum = {
   onTime: number;
   late: number;
   miss: number;
 };
 
-const SubjectAttend = ({ subjectId }: SubjectAttendProps) => {
-    const [subject, setSubject] = useState<AttendancesSum | null>(null);
+const SubjectAttend = () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const subjectId = queryParams.get('subject_id');
+    const [attendance, setAttendance] = useState<AttendancesSum | null>(null);
   
     useEffect(() => {
       const fetchSubjectData = async () => {
