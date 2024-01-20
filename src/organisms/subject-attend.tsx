@@ -20,17 +20,12 @@ const SubjectAttend = ({ subjectId }: SubjectAttendProps) => {
         try {
           const url = `${API_ROOT}/subjects/${subjectId}/all_attendances`;
           const response = await fetch(url);
-          const data = await response.json();
-  
-          if (response.ok) {
-            setSubject({
-              id: subjectId,
-              name: '科目名',
-              attendances: data,
-            });
-          } else {
-            setSubject(null);
+          if (!response.ok) {
+              return;
           }
+
+          const data = (await response.json()) as AttendancesSum;
+          setSubject(data);
         } catch (error) {
           console.error('科目データの取得に失敗しました:', error);
         }
