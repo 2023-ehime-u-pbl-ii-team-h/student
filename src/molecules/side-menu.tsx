@@ -1,6 +1,3 @@
-export const config = { runtime: 'client' };
-
-import React from 'react';
 import styles from "./side-menu.module.css";
 import Link from 'next/link';
 
