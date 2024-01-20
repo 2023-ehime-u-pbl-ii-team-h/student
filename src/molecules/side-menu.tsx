@@ -26,21 +26,25 @@ const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
             onClick={closeMenu}
           />
         </div>
+
         <button className={`${styles.menuItemButton} on-background-text`}>
           <div className={styles.stateLayer}>ホーム</div>
         </button>
+
         <div className={styles.subjectList}>
           {subjects &&
-            subjects.map((subject, index) => (
-              <button
-                key={index}
-                className={`${styles.menuItemButton} secondary-container on-secondary-container-text`}
+            subjects.map((subject) => (
+              <Link
+                key={subject.id}
+                href={`/attendances?subject_id=${subject.id}`}
+                className={styles.menuItemLink}
+                onClick={closeMenu}
               >
                 <div className={styles.stateLayer}>
                   <div className={styles.subjectName}>{subject.name}</div>
                   <div className={styles.lastDate}>{subject.lastDate}</div>
                 </div>
-              </button>
+              </Link>
             ))}
         </div>
         <Link
