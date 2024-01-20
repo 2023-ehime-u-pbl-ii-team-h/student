@@ -6,8 +6,14 @@ export type SubjectAttendanceProps = {
   subjectId: string;
 };
 
+type AttendancesSum = {
+  onTime: number;
+  late: number;
+  miss: number;
+};
+
 const SubjectAttend = ({ subjectId }: SubjectAttendProps) => {
-    const [subject, setSubject] = useState(null);
+    const [subject, setSubject] = useState<AttendancesSum | null>(null);
   
     useEffect(() => {
       const fetchSubjectData = async () => {
