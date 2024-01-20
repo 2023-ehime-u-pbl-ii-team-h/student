@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AttendanceStatus from '../molecules/attendance-status';
 import { API_ROOT } from "@/queries/config";
 
