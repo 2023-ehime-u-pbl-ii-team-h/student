@@ -2,8 +2,9 @@ import aButton from "./attend-button.module.css";
 import { BsCheckLg } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { ReactNode } from "react";
+import { FilledButton } from "../atoms/button";
 
-export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME";
+export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME" | "DISABLED";
 
 export type AttendButtonProps = {
   state: AttendButtonState;
@@ -15,36 +16,37 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
     AttendButtonState,
     {
       label: string;
-      btnClass: string;
+      disabled: boolean;
       icon: ReactNode;
     }
   > = {
     ENABLED: {
       label: "出席申請する",
-      btnClass: "enabled",
+      disabled: false,
       icon: null,
     },
     DONE: {
       label: "出席済み",
-      btnClass: "done",
+      disabled: true,
       icon: <BsCheckLg className={aButton.icon} />,
     },
     OVERTIME: {
       label: "申請時間外",
-      btnClass: "overtime",
+      disabled: false,
       icon: <RxCross1 className={aButton.icon} />,
     },
+    DISABLED: {
+      label: "…",
+      disabled: true,
+      icon: null,
+    },
   };
-  const { label, btnClass, icon } = variants[state];
+  const { label, disabled, icon } = variants[state];
   return (
-    <button
-      className={`${aButton.button} primary-container on-primary-container-text`}
-      onClick={onClick}
-    >
-      <div className={aButton[btnClass]}>
-        {icon}
-        <span>{label}</span>
-      </div>
-    </button>
+    <FilledButton
+      label={label}
+      leadingIcon={icon}
+      innerProps={{ onClick, disabled }}
+    />
   );
 }
