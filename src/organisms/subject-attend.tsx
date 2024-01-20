@@ -35,7 +35,7 @@ const SubjectAttend = () => {
     }, [subjectId]);
   
     if (!attendance) {
-      return <div className={styles.message}>科目データを読み込んでいます...</div>;
+      return <div className={`surface-variant-text body-medium ${styles.message}`}>科目データを読み込んでいます...</div>;
     }
   
     return (
