@@ -1,8 +1,8 @@
 .attendanceStatus {
     max-width: 20rem;
-    margin: 0.4rem auto;
+    margin: 6px auto;
   }
   
   .statusItem {
-    padding: 0.2rem;
+    padding: 3px;
   }  
