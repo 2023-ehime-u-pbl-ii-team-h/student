@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import AttendanceStatus from '../molecules/attendance-status';
 import { API_ROOT } from "@/queries/config";
+import { useSearchParams } from "next/navigation";
 
 type AttendancesSum = {
   onTime: number;
@@ -9,7 +10,7 @@ type AttendancesSum = {
 };
 
 const SubjectAttend = () => {
-    const queryParams = new URLSearchParams(window.location.search);
+    const queryParams = useSearchParams();
     const subjectId = queryParams.get('subject_id');
     const [attendance, setAttendance] = useState<AttendancesSum | null>(null);
   
