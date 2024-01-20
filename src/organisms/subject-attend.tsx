@@ -12,7 +12,7 @@ const SubjectAttend = ({ subjectId }: SubjectAttendProps) => {
     useEffect(() => {
       const fetchSubjectData = async () => {
         try {
-          const url = `${API_ROOT}/attendances/${subjectId}`;
+          const url = `${API_ROOT}/subjects/${subjectId}/all_attendances`;
           const response = await fetch(url);
           const data = await response.json();
   
