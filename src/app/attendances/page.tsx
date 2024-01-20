@@ -10,23 +10,14 @@ const AttendancesPage = () => {
   const [searchParams] = useSearchParams();
   const subjectId = searchParams.get('subject_id');
 
-  if (!subject) {
-    return <div className={styles.message}>科目データを読み込んでいます...</div>;
-  }
-
-  if (!subject.id) {
-    return (
-      <div className={styles.message}>
-        科目が見つかりませんでした。
-        {/* ホーム画面へのリンク */}
-      </div>
-    );
+  if (!subjectId) {
+    return <div className={styles.message}>科目IDが指定されていません。</div>;
   }
 
   return (
     <main className={styles.main}>
-      <TopNavBar label={subject.name} />
-      <AttendanceStatus onTime={subject.attendances.on_time} late={subject.attendances.late} miss={subject.attendances.miss} />
+      <TopNavBar label="科目名" /> {}
+      <SubjectAttend subjectId={subjectId} />
     </main>
   );
 };
