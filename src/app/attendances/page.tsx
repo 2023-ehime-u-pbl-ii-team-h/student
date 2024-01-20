@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import TopNavBar from '../molecules/top-navigation-bar';
 import AttendanceStatus from '../molecules/attendance-status';
