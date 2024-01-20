@@ -12,7 +12,7 @@ const AttendancesPage = () => {
 
     const fetchSubjectData = async () => {
       try {
-        const url = `/attendances/${subjectId}`;
+        const url = `${API_ROOT}/attendances/${subjectId}`;
 
         const response = await fetch(url);
         const data = await response.json();
