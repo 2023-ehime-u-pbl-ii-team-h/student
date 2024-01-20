@@ -4,7 +4,7 @@ import SubjectAttend from '../organisms/subject-attend';
 
 const AttendancesPage = () => {
   return (
-    <main className={styles.main}>
+    <main>
       <TopNavBar label="科目名" />
       <SubjectAttend />
     </main>
