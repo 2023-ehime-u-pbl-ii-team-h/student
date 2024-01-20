@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import AttendanceStatus from '../molecules/attendance-status';
 import { API_ROOT } from "@/queries/config";
 import { useSearchParams } from "next/navigation";
-import styles from '../molecules/attendance-status.module.css';
+import styles from './subject-attend.module.css';;
 
 type AttendancesSum = {
   onTime: number;
