@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './attendance-status.module.css';
 
 export type AttendanceStatusProps = {
