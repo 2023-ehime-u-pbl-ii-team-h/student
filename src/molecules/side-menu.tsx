@@ -31,7 +31,7 @@ const SideMenu = ({ isOpen, closeMenu, subjects }: SideMenuProps) => {
         <div className={styles.subjectList}>
           {subjects &&
             subjects.map((subject) => (
-              <Link key={subject.id} href={`/attendances/${subject.id}`}className={styles.menuItemLink} onClick={closeMenu}>
+              <Link key={subject.id} href={`/attendances?subject_id=${subject.id}`}className={styles.menuItemLink} onClick={closeMenu}>
                   <div className={styles.stateLayer}>
                     <div className={styles.subjectName}>{subject.name}</div>
                     <div className={styles.lastDate}>{subject.lastDate}</div>
