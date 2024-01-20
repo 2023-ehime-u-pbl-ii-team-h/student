@@ -1,2 +1,4 @@
-.message {
+.container {
+  width: min(98dvw, 560px);
+  margin: 8px auto;
 }
