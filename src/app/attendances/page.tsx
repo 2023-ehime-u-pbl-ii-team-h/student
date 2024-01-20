@@ -1,6 +1,5 @@
-import TopNavBar from '../molecules/top-navigation-bar';
-import AttendanceStatus from '../molecules/attendance-status';
-import SubjectAttend from '../organisms/subject-attend';
+import TopNavBar from "@/molecules/top-navigation-bar";
+import SubjectAttend from "@/organisms/subject-attend";
 
 const AttendancesPage = () => {
   return (
