@@ -5,6 +5,8 @@ import { API_ROOT } from "@/queries/config";
 import { useSearchParams } from "next/navigation";
 import styles from "./subject-attend.module.css";
 import AttendStatus from "./attend-status";
+import { useSubjects } from "@/queries/subjects";
+import TopNavBar from "@/molecules/top-navigation-bar";
 
 type AttendancesSum = {
   onTime: number;
@@ -16,6 +18,8 @@ const SubjectAttend = () => {
   const queryParams = useSearchParams();
   const subjectId = queryParams.get("subject_id");
   const [attendance, setAttendance] = useState<AttendancesSum | null>(null);
+  const subjects = useSubjects();
+  const subjectName = subjects?.find(({ id }) => id === subjectId)?.name;
 
   useEffect(() => {
     const fetchSubjectData = async () => {
@@ -36,22 +40,23 @@ const SubjectAttend = () => {
     fetchSubjectData();
   }, [subjectId]);
 
-  if (!attendance) {
-    return (
-      <div className={`surface-variant-text body-medium ${styles.message}`}>
-        科目データを読み込んでいます...
-      </div>
-    );
-  }
-
   return (
-    <div className={styles.container}>
-      <AttendStatus
-        attendanceCount={attendance.onTime}
-        tardinessCount={attendance.late}
-        absenceCount={attendance.miss}
-      />
-    </div>
+    <>
+      <TopNavBar label={subjectName} />
+      <div className={styles.container}>
+        {attendance ? (
+          <AttendStatus
+            attendanceCount={attendance.onTime}
+            tardinessCount={attendance.late}
+            absenceCount={attendance.miss}
+          />
+        ) : (
+          <div className={`surface-variant-text body-medium ${styles.message}`}>
+            科目データを読み込んでいます...
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
