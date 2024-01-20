@@ -9,7 +9,7 @@ const AttendancesPage = () => {
   const subjectId = searchParams.get('subject_id');
   const [subject, setSubject] = useState(null);
 
-
+  useEffect(() => {
     const fetchSubjectData = async () => {
       try {
         const url = `${API_ROOT}/attendances/${subjectId}`;
