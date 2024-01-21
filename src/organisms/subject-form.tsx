@@ -5,6 +5,7 @@ import styles from "./subject-form.module.css";
 import { FilledButton } from "@/atoms/button";
 import { useState } from "react";
 import { Subject } from "@/queries/subjects";
+import { registerSubject } from "@/commands/register-subject";
 
 export function SubjectForm(): JSX.Element {
   const [selected, setSelected] = useState<Subject | null>(null);
@@ -13,7 +14,7 @@ export function SubjectForm(): JSX.Element {
     if (!selected) {
       return;
     }
-    console.dir(selected);
+    registerSubject(selected.id).catch(console.error);
   }
 
   return (
