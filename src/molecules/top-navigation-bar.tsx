@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./top-navigation-bar.module.css";
-import { MdMenu, MdPerson } from "react-icons/md";
+import { MdMenu, MdOutlinePerson, MdPerson } from "react-icons/md";
 import SideMenu from "../molecules/side-menu";
 import AccountMenu from "./account-menu";
 import { StandardIconButton } from "../atoms/icon-button";
+import { useLogin } from "@/queries/login";
+import { navigateToLoginEndpoint } from "@/commands/login-action";
+import { logoutAndReload } from "@/commands/logout-action";
 
 const UserAvatar = ({ userInitial }: { userInitial: string }) =>
   userInitial ? (
@@ -33,10 +36,17 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
   const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
 
   const menuRef = useRef<HTMLDivElement>(null);
-  const user: { name: string; initials: string } | null = {
-    name: "TEST Student",
-    initials: "TS",
-  };
+  const login = useLogin();
+  const user: { name: string; initials: string } | null =
+    login.type === "LOGGED_IN"
+      ? {
+          name: login.name,
+          initials: login.name
+            .split(" ")
+            .map((word) => word.charAt(0))
+            .join(""),
+        }
+      : null;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -66,7 +76,13 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
         <CurrentScreenLabel label={label} />
         <StandardIconButton
           alt=""
-          icon={<UserAvatar userInitial={user?.initials} />}
+          icon={
+            user ? (
+              <UserAvatar userInitial={user.initials} />
+            ) : (
+              <MdOutlinePerson />
+            )
+          }
           onClick={toggleAccountMenu}
         />
       </div>
@@ -77,8 +93,8 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
         <AccountMenu
           ref={menuRef}
           user={user}
-          onLogout={() => console.log("ログアウト処理")}
-          onLogin={() => console.log("ログイン処理")}
+          onLogout={logoutAndReload}
+          onLogin={navigateToLoginEndpoint}
         />
       )}
     </>
