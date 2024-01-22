@@ -1,4 +1,4 @@
-import { API_ROOT } from "@/queries/config";
+import { API_ROOT } from "../queries/config";
 
 const BACKEND_LOGOUT_ENDPOINT = `${API_ROOT}/logout`;
 
