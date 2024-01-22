@@ -2,7 +2,7 @@ import { API_ROOT } from "@/queries/config";
 import { useAccount, useMsal } from "@azure/msal-react";
 import { useState, useCallback } from "react";
 
-const ATTEND_API_ENDPOINT = `${API_ROOT}/attendance`;
+const ATTEND_API_ENDPOINT = `${API_ROOT}/attendances`;
 
 export type AttendResult =
   | { type: "READY" }
