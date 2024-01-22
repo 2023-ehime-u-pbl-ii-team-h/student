@@ -18,7 +18,10 @@ export function useAttendAction(): [
   const submit = useCallback(async () => {
     setResult({ type: "AWAITING" });
     try {
-      const response = await fetch(ATTEND_API_ENDPOINT, { method: "POST" });
+      const response = await fetch(ATTEND_API_ENDPOINT, {
+        credentials: "include",
+        method: "POST",
+      });
       if (!response.ok) {
         setResult({ type: "FAILURE" });
         return;

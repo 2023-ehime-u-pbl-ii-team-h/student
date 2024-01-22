@@ -4,6 +4,7 @@ export async function registerSubject(subjectId: string): Promise<void> {
   const registrationRes = await fetch(
     `${API_ROOT}/me/registrations/${subjectId}`,
     {
+      credentials: "include",
       method: "POST",
     },
   );
@@ -12,7 +13,9 @@ export async function registerSubject(subjectId: string): Promise<void> {
       `registration of subject (${subjectId}) failed: ${await registrationRes.text()}`,
     );
   }
-  const subjectRes = await fetch(`${API_ROOT}/subjects/${subjectId}`);
+  const subjectRes = await fetch(`${API_ROOT}/subjects/${subjectId}`, {
+    credentials: "include",
+  });
   const { boards } = (await subjectRes.json()) as {
     boards: {
       id: string;
