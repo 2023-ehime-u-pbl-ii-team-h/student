@@ -1,4 +1,4 @@
-import TopNavBar from "@/molecules/top-navigation-bar";
+import TopNavBar from "@/organisms/top-navigation-bar";
 import { SubjectForm } from "@/organisms/subject-form";
 
 export default function AddSubjectPage(): JSX.Element {

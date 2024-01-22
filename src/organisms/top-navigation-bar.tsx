@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./top-navigation-bar.module.css";
 import { MdMenu, MdOutlinePerson, MdPerson } from "react-icons/md";
 import SideMenu from "../molecules/side-menu";
-import AccountMenu from "./account-menu";
+import AccountMenu from "../molecules/account-menu";
 import { StandardIconButton } from "../atoms/icon-button";
 import { logoutAndReload } from "../commands/logout-action";
 import { useAccount, useMsal } from "@azure/msal-react";

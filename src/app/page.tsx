@@ -2,7 +2,7 @@ import { AttendOutlet } from "@/organisms/attend-outlet";
 import { Content } from "./content";
 import styles from "./page.module.css";
 import { Suspense } from "react";
-import TopNavBar from "@/molecules/top-navigation-bar";
+import TopNavBar from "@/organisms/top-navigation-bar";
 
 export default function Home() {
   return (

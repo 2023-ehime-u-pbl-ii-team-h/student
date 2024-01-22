@@ -1,5 +1,5 @@
-import AttendButton, { AttendButtonState } from "./attend-button";
-import AttendStatus, { AttendanceProps } from "./attend-status";
+import AttendButton, { AttendButtonState } from "../molecules/attend-button";
+import AttendStatus, { AttendanceProps } from "../molecules/attend-status";
 
 export interface AttendOutletProps {
   attendState: AttendButtonState;

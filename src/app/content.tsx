@@ -2,7 +2,7 @@
 
 import { useSubjects } from "@/queries/subjects";
 import { useAttendAction, AttendResult } from "../commands/attend-action";
-import { AttendButtonState } from "../organisms/attend-button";
+import { AttendButtonState } from "../molecules/attend-button";
 import { AttendOutlet } from "@/organisms/attend-outlet";
 import { useAttendancesSum } from "@/queries/attendances-sum";
 

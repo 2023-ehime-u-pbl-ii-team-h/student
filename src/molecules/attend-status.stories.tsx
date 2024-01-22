@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import AttendStatus from "./attend-status";
 
 export default {
-  title: "organisms/attend status",
+  title: "molecules/attend status",
   component: AttendStatus,
 } satisfies Meta<typeof AttendStatus>;
 

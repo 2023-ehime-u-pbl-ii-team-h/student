@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import TopNavBar from "./top-navigation-bar";
 
 export default {
-  title: "molecules/top navigation bar",
+  title: "organisms/top navigation bar",
   component: TopNavBar,
 } satisfies Meta<typeof TopNavBar>;
 

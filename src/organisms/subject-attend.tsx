@@ -1,7 +1,7 @@
 "use client";
 
-import AttendStatus from "./attend-status";
-import TopNavBar from "@/molecules/top-navigation-bar";
+import AttendStatus from "../molecules/attend-status";
+import TopNavBar from "@/organisms/top-navigation-bar";
 import styles from "./subject-attend.module.css";
 import { useAttendancesSum } from "@/queries/attendances-sum";
 import { useSearchParams } from "next/navigation";

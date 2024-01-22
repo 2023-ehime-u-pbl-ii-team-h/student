@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import AttendButton from "./attend-button";
 
 export default {
-  title: "organisms/attend button",
+  title: "molecules/attend button",
   component: AttendButton,
   argTypes: {
     state: {
