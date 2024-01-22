@@ -45,9 +45,13 @@ const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
               >
                 <div className={styles.stateLayer}>
                   <div className={styles.subjectName}>{subject.name}</div>
-                  <div className={styles.lastDate}>
-                    {new Date(subject.boards[0].startFrom).toLocaleDateString()}
-                  </div>
+                  {subject.boards.length !== 0 && (
+                    <div className={styles.lastDate}>
+                      {new Date(
+                        subject.boards[0].startFrom,
+                      ).toLocaleDateString()}
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}
