@@ -43,7 +43,7 @@ export function SubjectSearch({
                 <p className="body-medium">
                   該当する科目が見つかりませんでした
                 </p>
-                <p className="body-small">検索結果を変えてみましょう</p>
+                <p className="body-small">検索条件を変えてみましょう</p>
               </div>
             ) : (
               resultItems.map(({ id, name, lastDate }) => (
