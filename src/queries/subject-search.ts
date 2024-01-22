@@ -19,6 +19,7 @@ export function useSubjectSearch(input: string): readonly Subject[] | null {
     let payload;
     try {
       const res = await fetch(`${API_ROOT}/subjects?` + params, {
+        credentials: "include",
         signal: aborter.current.signal,
       });
       if (res.status === 404) {

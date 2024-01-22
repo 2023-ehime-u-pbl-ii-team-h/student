@@ -13,7 +13,9 @@ export const useAttendancesSum = (subjectId: string): AttendancesSum | null => {
     const fetchSubjectData = async () => {
       try {
         const url = `${API_ROOT}/subjects/${subjectId}/all_attendances`;
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          credentials: "include",
+        });
         if (!response.ok) {
           return;
         }

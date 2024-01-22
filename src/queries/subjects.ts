@@ -17,7 +17,10 @@ export function useSubjects(): Subject[] | null {
     const SUBJECTS_ENDPOINT = `${API_ROOT}/me/subjects`;
     (async () => {
       try {
-        const response = await fetch(SUBJECTS_ENDPOINT, { signal });
+        const response = await fetch(SUBJECTS_ENDPOINT, {
+          credentials: "include",
+          signal,
+        });
         if (!response.ok) {
           return;
         }
