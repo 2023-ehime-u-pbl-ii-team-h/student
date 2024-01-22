@@ -36,7 +36,7 @@ const AccountMenu = (
         ref={ref}
         className={`${styles.accountMenu} surface-container on-surface-text`}
       >
-        <span className={styles.menuItemButton}>まだログインしていません</span>
+        <div className={styles.accountInfo}>まだログインしていません</div>
         <button className={styles.menuItemButton} onClick={onLogin}>
           ログイン
         </button>
