@@ -27,9 +27,12 @@ const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
           />
         </div>
 
-        <button className={`${styles.menuItemButton} on-background-text`}>
+        <Link
+          href="/"
+          className={`${styles.menuItemButton} on-background-text`}
+        >
           <div className={styles.stateLayer}>ホーム</div>
-        </button>
+        </Link>
 
         <div className={styles.subjectList}>
           {subjects &&
