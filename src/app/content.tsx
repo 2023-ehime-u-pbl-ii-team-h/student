@@ -1,8 +1,10 @@
 "use client";
 
+import { useSubjects } from "@/queries/subjects";
 import { useAttendAction, AttendResult } from "../commands/attend-action";
 import { AttendButtonState } from "../organisms/attend-button";
 import { AttendOutlet } from "@/organisms/attend-outlet";
+import { useAttendancesSum } from "@/queries/attendances-sum";
 
 const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   READY: "ENABLED",
@@ -14,16 +16,22 @@ const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
 export function Content(): JSX.Element {
   const [attendResult, submitAttendAction] = useAttendAction();
   const attendState = BUTTON_STATE_MAP[attendResult.type];
+  const subjects = useSubjects();
+  const sum = useAttendancesSum(subjects ? subjects[0].id : "");
 
   return (
     <AttendOutlet
       onAttend={submitAttendAction}
-      attendance={{
-        attendanceCount: 14,
-        tardinessCount: 13,
-        absenceCount: 2,
-      }}
-      {...{ attendState }}
+      attendance={
+        sum
+          ? {
+              attendanceCount: sum.onTime,
+              tardinessCount: sum.late,
+              absenceCount: sum.miss,
+            }
+          : undefined
+      }
+      attendState={attendState}
     />
   );
 }
