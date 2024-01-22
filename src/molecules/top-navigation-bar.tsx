@@ -96,9 +96,7 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
           onClick={toggleAccountMenu}
         />
       </div>
-      {isSideMenuOpen && (
-        <SideMenu isOpen={isSideMenuOpen} closeMenu={closeSideMenu} />
-      )}
+      <SideMenu isOpen={isSideMenuOpen} closeMenu={closeSideMenu} />
       {isAccountMenuOpen && (
         <AccountMenu
           ref={menuRef}
