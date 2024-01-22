@@ -19,7 +19,9 @@ export async function registerSubject(
     );
   }
   const subjectRes = await fetch(`${API_ROOT}/subjects/${subjectId}`, {
-    credentials: "include",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
   });
   const { boards } = (await subjectRes.json()) as {
     boards: {
