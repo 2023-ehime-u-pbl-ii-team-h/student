@@ -1,8 +1,31 @@
-import { useSubjects } from "../queries/subjects";
+import { Subject, useSubjects } from "../queries/subjects";
 import styles from "./side-menu.module.css";
 import { StandardIconButton } from "../atoms/icon-button";
 import { MdClose } from "react-icons/md";
 import Link from "next/link";
+
+const SubjectLink = ({
+  subject,
+  closeMenu,
+}: {
+  subject: Subject;
+  closeMenu: () => void;
+}): JSX.Element => (
+  <Link
+    href={`/attendances?subject_id=${subject.id}`}
+    className={styles.menuItemButton}
+    onClick={closeMenu}
+  >
+    <div className={styles.stateLayer}>
+      <div className={styles.subjectName}>{subject.name}</div>
+      {subject.boards.length !== 0 && (
+        <div className={styles.lastDate}>
+          {new Date(subject.boards[0].startFrom).toLocaleDateString()}
+        </div>
+      )}
+    </div>
+  </Link>
+);
 
 export type SideMenuProps = {
   isOpen: boolean;
@@ -37,23 +60,11 @@ const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
         <div className={styles.subjectList}>
           {subjects &&
             subjects.map((subject) => (
-              <Link
+              <SubjectLink
                 key={subject.id}
-                href={`/attendances?subject_id=${subject.id}`}
-                className={styles.menuItemLink}
-                onClick={closeMenu}
-              >
-                <div className={styles.stateLayer}>
-                  <div className={styles.subjectName}>{subject.name}</div>
-                  {subject.boards.length !== 0 && (
-                    <div className={styles.lastDate}>
-                      {new Date(
-                        subject.boards[0].startFrom,
-                      ).toLocaleDateString()}
-                    </div>
-                  )}
-                </div>
-              </Link>
+                subject={subject}
+                closeMenu={closeMenu}
+              />
             ))}
         </div>
         <Link
