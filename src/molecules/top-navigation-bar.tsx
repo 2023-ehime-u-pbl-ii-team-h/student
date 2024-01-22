@@ -6,9 +6,9 @@ import { MdMenu, MdOutlinePerson, MdPerson } from "react-icons/md";
 import SideMenu from "../molecules/side-menu";
 import AccountMenu from "./account-menu";
 import { StandardIconButton } from "../atoms/icon-button";
-import { useLogin } from "@/queries/login";
-import { navigateToLoginEndpoint } from "@/commands/login-action";
 import { logoutAndReload } from "@/commands/logout-action";
+import { useMsalAuthentication } from "@azure/msal-react";
+import { InteractionType } from "@azure/msal-browser";
 
 const UserAvatar = ({ userInitial }: { userInitial: string }) =>
   userInitial ? (
@@ -36,17 +36,17 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
   const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
 
   const menuRef = useRef<HTMLDivElement>(null);
-  const login = useLogin();
-  const user: { name: string; initials: string } | null =
-    login.type === "LOGGED_IN"
-      ? {
-          name: login.name,
-          initials: login.name
-            .split(" ")
+  const { login, result } = useMsalAuthentication(InteractionType.Redirect);
+  const user: { name: string; initials: string } | null = result
+    ? {
+        name: result.account.name ?? "",
+        initials:
+          result.account.name
+            ?.split(" ")
             .map((word) => word.charAt(0))
-            .join(""),
-        }
-      : null;
+            .join("") ?? "",
+      }
+    : null;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -94,7 +94,7 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
           ref={menuRef}
           user={user}
           onLogout={logoutAndReload}
-          onLogin={navigateToLoginEndpoint}
+          onLogin={login}
         />
       )}
     </>

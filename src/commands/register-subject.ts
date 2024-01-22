@@ -1,10 +1,15 @@
 import { API_ROOT } from "@/queries/config";
 
-export async function registerSubject(subjectId: string): Promise<void> {
+export async function registerSubject(
+  accessToken: string,
+  subjectId: string,
+): Promise<void> {
   const registrationRes = await fetch(
     `${API_ROOT}/me/registrations/${subjectId}`,
     {
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
       method: "PUT",
     },
   );

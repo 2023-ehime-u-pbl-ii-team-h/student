@@ -2,24 +2,39 @@ import { useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { API_ROOT } from "./config";
 import { Subject } from "./subjects";
+import { useAccount, useMsal } from "@azure/msal-react";
 
 const BLOCK_DURATION = 500;
 
 export function useSubjectSearch(input: string): readonly Subject[] | null {
+  const { instance, accounts } = useMsal();
+  const account = useAccount(accounts[0] ?? {});
   const aborter = useRef<AbortController | null>(null);
   const [subjects, setSubjects] = useState<Subject[] | null>(null);
 
   const fetchSearch = useDebouncedCallback(async (input: string) => {
+    if (!account) {
+      return;
+    }
+
     setSubjects(null);
     aborter.current?.abort();
     aborter.current = new AbortController();
+
+    const tokenRes = await instance.acquireTokenSilent({
+      scopes: ["User.Read"],
+      account,
+    });
+
     const params = new URLSearchParams({
       name: input,
     });
     let payload;
     try {
       const res = await fetch(`${API_ROOT}/subjects?` + params, {
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${tokenRes.accessToken}`,
+        },
         signal: aborter.current.signal,
       });
       if (res.status === 404) {
