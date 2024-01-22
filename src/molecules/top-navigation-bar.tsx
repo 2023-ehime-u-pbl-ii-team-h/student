@@ -38,6 +38,7 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const { login, acquireToken, result } = useMsalAuthentication(
     InteractionType.Redirect,
+    { scopes: ["User.Read"] },
   );
   const user: { name: string; initials: string } | null = result
     ? {
