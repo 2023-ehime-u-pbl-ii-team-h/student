@@ -6,15 +6,23 @@ import { FilledButton } from "@/atoms/button";
 import { useState } from "react";
 import { Subject } from "@/queries/subjects";
 import { registerSubject } from "@/commands/register-subject";
+import { useAccount, useMsal } from "@azure/msal-react";
 
 export function SubjectForm(): JSX.Element {
+  const { instance, accounts } = useMsal();
+  const account = useAccount(accounts[0] ?? {});
   const [selected, setSelected] = useState<Subject | null>(null);
 
-  function subscribeSubject() {
-    if (!selected) {
+  async function subscribeSubject() {
+    if (!selected || !account) {
       return;
     }
-    registerSubject(selected.id).catch(console.error);
+
+    const tokenRes = await instance.acquireTokenSilent({
+      scopes: ["User.Read"],
+      account,
+    });
+    await registerSubject(tokenRes.accessToken, selected.id);
   }
 
   return (
@@ -33,7 +41,7 @@ export function SubjectForm(): JSX.Element {
       <FilledButton
         label="選択した科目を追加"
         innerProps={{
-          onClick: subscribeSubject,
+          onClick: () => subscribeSubject().catch(console.error),
           disabled: !selected,
         }}
       />

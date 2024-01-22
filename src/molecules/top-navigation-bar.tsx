@@ -36,7 +36,9 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
   const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
 
   const menuRef = useRef<HTMLDivElement>(null);
-  const { login, result } = useMsalAuthentication(InteractionType.Redirect);
+  const { login, acquireToken, result } = useMsalAuthentication(
+    InteractionType.Redirect,
+  );
   const user: { name: string; initials: string } | null = result
     ? {
         name: result.account.name ?? "",
@@ -64,6 +66,14 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const logout = async () => {
+    const tokenRes = await acquireToken(InteractionType.Silent);
+    if (!tokenRes) {
+      return;
+    }
+    await logoutAndReload(tokenRes.accessToken);
+  };
 
   return (
     <>
@@ -93,7 +103,7 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
         <AccountMenu
           ref={menuRef}
           user={user}
-          onLogout={logoutAndReload}
+          onLogout={logout}
           onLogin={login}
         />
       )}
