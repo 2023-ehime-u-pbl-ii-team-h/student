@@ -16,7 +16,10 @@ export function useLogin(): LoginInfo {
     const ME_ENDPOINT = `${API_ROOT}/me`;
     (async () => {
       try {
-        const response = await fetch(ME_ENDPOINT, { signal });
+        const response = await fetch(ME_ENDPOINT, {
+          credentials: "include",
+          signal,
+        });
         if (!response.ok) {
           setLoginInfo({ type: "NOT_LOGGED_IN" });
           return;
