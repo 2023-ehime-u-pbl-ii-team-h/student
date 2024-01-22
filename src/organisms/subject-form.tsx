@@ -41,7 +41,13 @@ export function SubjectForm(): JSX.Element {
       <FilledButton
         label="選択した科目を追加"
         innerProps={{
-          onClick: () => subscribeSubject().catch(console.error),
+          onClick: (e) => {
+            e.currentTarget.disabled = true;
+            subscribeSubject().catch((err) => {
+              console.error(err);
+              e.currentTarget.disabled = false;
+            });
+          },
           disabled: !selected,
         }}
       />
