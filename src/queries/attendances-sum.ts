@@ -14,6 +14,8 @@ export const useAttendancesSum = (subjectId: string): AttendancesSum | null => {
   const [attendance, setAttendance] = useState<AttendancesSum | null>(null);
 
   useEffect(() => {
+    const aborter = new AbortController();
+
     const fetchSubjectData = async () => {
       if (!account) {
         return;
@@ -22,25 +24,28 @@ export const useAttendancesSum = (subjectId: string): AttendancesSum | null => {
         scopes: ["User.Read"],
         account,
       });
-      try {
-        const url = `${API_ROOT}/subjects/${subjectId}/all_attendances`;
-        const response = await fetch(url, {
-          headers: {
-            Authorization: `Bearer ${tokenRes.accessToken}`,
-          },
-        });
-        if (!response.ok) {
-          return;
-        }
-
-        const data = (await response.json()) as AttendancesSum;
-        setAttendance(data);
-      } catch (error) {
-        console.error("科目データの取得に失敗しました:", error);
+      if (aborter.signal.aborted) {
+        return;
       }
-    };
+      const url = `${API_ROOT}/subjects/${subjectId}/all_attendances`;
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${tokenRes.accessToken}`,
+        },
+        signal: aborter.signal,
+      });
+      if (!response.ok || aborter.signal.aborted) {
+        return;
+      }
 
-    fetchSubjectData();
+      const data = (await response.json()) as AttendancesSum;
+      setAttendance(data);
+    };
+    fetchSubjectData().catch(console.error);
+
+    return () => {
+      aborter.abort();
+    };
   }, [instance, account, subjectId]);
 
   return attendance;
