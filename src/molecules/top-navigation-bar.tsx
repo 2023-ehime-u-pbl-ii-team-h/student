@@ -7,8 +7,7 @@ import SideMenu from "../molecules/side-menu";
 import AccountMenu from "./account-menu";
 import { StandardIconButton } from "../atoms/icon-button";
 import { logoutAndReload } from "../commands/logout-action";
-import { useMsalAuthentication } from "@azure/msal-react";
-import { InteractionType } from "@azure/msal-browser";
+import { useAccount, useMsal } from "@azure/msal-react";
 
 const UserAvatar = ({ userInitial }: { userInitial: string }) =>
   userInitial ? (
@@ -36,15 +35,13 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
   const toggleAccountMenu = () => setIsAccountMenuOpen((flag) => !flag);
 
   const menuRef = useRef<HTMLDivElement>(null);
-  const { login, acquireToken, result } = useMsalAuthentication(
-    InteractionType.Redirect,
-    { scopes: ["User.Read"] },
-  );
-  const user: { name: string; initials: string } | null = result
+  const { accounts, instance } = useMsal();
+  const account = useAccount(accounts[0] ?? {});
+  const user: { name: string; initials: string } | null = account
     ? {
-        name: result.account.name ?? "",
+        name: account.name ?? "",
         initials:
-          result.account.name
+          account.name
             ?.split(" ")
             .map((word) => word.charAt(0))
             .join("") ?? "",
@@ -68,8 +65,24 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
     };
   }, []);
 
+  const login = async () => {
+    if (account) {
+      return;
+    }
+    await instance.loginRedirect({
+      scopes: ["User.Read"],
+      prompt: "select_account",
+    });
+  };
+
   const logout = async () => {
-    const tokenRes = await acquireToken(InteractionType.Silent);
+    if (!account) {
+      return;
+    }
+    const tokenRes = await instance.acquireTokenSilent({
+      account,
+      scopes: ["User.Read"],
+    });
     if (!tokenRes) {
       return;
     }
