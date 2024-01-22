@@ -5,7 +5,13 @@ import { useAccount, useMsal } from "@azure/msal-react";
 export interface Subject {
   id: string;
   name: string;
-  lastDate: string;
+  boards: {
+    id: string;
+    subject: string;
+    startFrom: string;
+    secondsFromStartToBeLate: number;
+    secondsFromBeLateToEnd: number;
+  }[];
 }
 
 export function useSubjects(): Subject[] | null {
