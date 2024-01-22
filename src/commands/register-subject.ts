@@ -5,7 +5,7 @@ export async function registerSubject(subjectId: string): Promise<void> {
     `${API_ROOT}/me/registrations/${subjectId}`,
     {
       credentials: "include",
-      method: "POST",
+      method: "PUT",
     },
   );
   if (!registrationRes.ok) {
