@@ -1,11 +1,10 @@
 import { RadioListItem } from "@/atoms/list-item";
 import styles from "./subject-search.module.css";
 import { useState } from "react";
-import { Subject } from "@/queries/subjects";
-import { useSubjectSearch } from "@/queries/subject-search";
+import { PartialSubject, useSubjectSearch } from "@/queries/subject-search";
 
 export type SubjectSearchProps = {
-  onSelectItem: (subject: Subject) => void;
+  onSelectItem: (subject: PartialSubject) => void;
 };
 
 export function SubjectSearch({
@@ -46,12 +45,12 @@ export function SubjectSearch({
                 <p className="body-small">検索条件を変えてみましょう</p>
               </div>
             ) : (
-              resultItems.map(({ id, name, lastDate }) => (
+              resultItems.map(({ id, name, next_board_end }) => (
                 <RadioListItem
                   key={id}
                   groupName="search_choice"
                   headline={name}
-                  supportingText={lastDate}
+                  supportingText={next_board_end ?? ""}
                   selected={selectedId === id}
                   onClick={() => onSelect(id)}
                 />

@@ -1,16 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { API_ROOT } from "./config";
-import { Subject } from "./subjects";
 import { useAccount, useMsal } from "@azure/msal-react";
 
 const BLOCK_DURATION = 500;
 
-export function useSubjectSearch(input: string): readonly Subject[] | null {
+export type PartialSubject = {
+  id: string;
+  name: string;
+  next_board_end: string | null;
+  assigned: string[];
+};
+
+export function useSubjectSearch(
+  input: string,
+): readonly PartialSubject[] | null {
   const { instance, accounts } = useMsal();
   const account = useAccount(accounts[0] ?? {});
   const aborter = useRef<AbortController | null>(null);
-  const [subjects, setSubjects] = useState<Subject[] | null>(null);
+  const [subjects, setSubjects] = useState<PartialSubject[] | null>(null);
 
   const fetchSearch = useDebouncedCallback(async (input: string) => {
     if (!account) {
@@ -54,13 +62,7 @@ export function useSubjectSearch(input: string): readonly Subject[] | null {
       console.error(error);
       return;
     }
-    setSubjects(
-      payload.map(({ id, name, next_board_end }) => ({
-        id,
-        name,
-        lastDate: next_board_end ?? "",
-      })),
-    );
+    setSubjects(payload);
   }, BLOCK_DURATION);
 
   useEffect(() => {

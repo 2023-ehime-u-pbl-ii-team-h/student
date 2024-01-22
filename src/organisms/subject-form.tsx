@@ -4,14 +4,14 @@ import { SubjectSearch } from "@/molecules/subject-search";
 import styles from "./subject-form.module.css";
 import { FilledButton } from "@/atoms/button";
 import { useState } from "react";
-import { Subject } from "@/queries/subjects";
 import { registerSubject } from "@/commands/register-subject";
 import { useAccount, useMsal } from "@azure/msal-react";
+import { PartialSubject } from "@/queries/subject-search";
 
 export function SubjectForm(): JSX.Element {
   const { instance, accounts } = useMsal();
   const account = useAccount(accounts[0] ?? {});
-  const [selected, setSelected] = useState<Subject | null>(null);
+  const [selected, setSelected] = useState<PartialSubject | null>(null);
 
   async function subscribeSubject() {
     if (!selected || !account) {
@@ -36,7 +36,7 @@ export function SubjectForm(): JSX.Element {
           <ul></ul>
         </dd>
         <dt>次の出席申請受付日時</dt>
-        <dd>{selected?.lastDate}</dd>
+        <dd>{selected?.next_board_end}</dd>
       </dl>
       <FilledButton
         label="選択した科目を追加"
