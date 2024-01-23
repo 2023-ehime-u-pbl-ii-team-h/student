@@ -4,7 +4,12 @@ import { RxCross1 } from "react-icons/rx";
 import { ReactNode } from "react";
 import { FilledButton } from "../atoms/button";
 
-export type AttendButtonState = "ENABLED" | "DONE" | "OVERTIME" | "DISABLED";
+export type AttendButtonState =
+  | "ENABLED"
+  | "DONE"
+  | "OVERTIME"
+  | "LOADING"
+  | "SUBMITTING";
 
 export type AttendButtonProps = {
   state: AttendButtonState;
@@ -35,8 +40,13 @@ export default function AttendButton({ state, onClick }: AttendButtonProps) {
       disabled: false,
       icon: <RxCross1 className={aButton.icon} />,
     },
-    DISABLED: {
-      label: "…",
+    LOADING: {
+      label: "準備中…",
+      disabled: true,
+      icon: null,
+    },
+    SUBMITTING: {
+      label: "送信中…",
       disabled: true,
       icon: null,
     },

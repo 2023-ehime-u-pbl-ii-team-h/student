@@ -6,7 +6,7 @@ const ATTEND_API_ENDPOINT = `${API_ROOT}/attendances`;
 
 export type AttendResult =
   | { type: "READY" }
-  | { type: "AWAITING" }
+  | { type: "SUBMITTING" }
   | { type: "SUCCESS"; response: Response }
   | { type: "FAILURE" };
 
@@ -19,10 +19,10 @@ export function useAttendAction(): [
   const [result, setResult] = useState<AttendResult>({ type: "READY" });
 
   const submit = useCallback(async () => {
-    setResult({ type: "AWAITING" });
     if (!account) {
       return;
     }
+    setResult({ type: "SUBMITTING" });
     const tokenRes = await instance.acquireTokenSilent({
       scopes: ["User.Read"],
       account,

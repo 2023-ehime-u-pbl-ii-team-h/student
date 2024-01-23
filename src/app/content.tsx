@@ -8,7 +8,7 @@ import { useAttendancesSum } from "@/queries/attendances-sum";
 
 const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   READY: "ENABLED",
-  AWAITING: "DISABLED",
+  SUBMITTING: "SUBMITTING",
   SUCCESS: "DONE",
   FAILURE: "OVERTIME",
 };
@@ -32,18 +32,19 @@ export function Content(): JSX.Element {
   );
   const sum = useAttendancesSum(activeBoard ? activeBoard[0].id : "");
 
+  if (!sum) {
+    return (
+      <AttendOutlet onAttend={submitAttendAction} attendState={"LOADING"} />
+    );
+  }
   return (
     <AttendOutlet
       onAttend={submitAttendAction}
-      attendance={
-        sum
-          ? {
-              attendanceCount: sum.onTime,
-              tardinessCount: sum.late,
-              absenceCount: sum.miss,
-            }
-          : undefined
-      }
+      attendance={{
+        attendanceCount: sum.onTime,
+        tardinessCount: sum.late,
+        absenceCount: sum.miss,
+      }}
       attendState={attendState}
     />
   );
