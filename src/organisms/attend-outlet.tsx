@@ -5,6 +5,7 @@ import { useAttendAction, AttendResult } from "../commands/attend-action";
 import { useAttendancesSum } from "@/queries/attendances-sum";
 import AttendButton, { AttendButtonState } from "../molecules/attend-button";
 import AttendStatus, { AttendanceProps } from "../molecules/attend-status";
+import { useIsAuthenticated } from "@azure/msal-react";
 
 const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   READY: "ENABLED",
@@ -14,6 +15,7 @@ const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
 };
 
 export function AttendOutlet(): JSX.Element {
+  const isAuthenticated = useIsAuthenticated();
   const [attendResult, submitAttendAction] = useAttendAction();
   const attendState = BUTTON_STATE_MAP[attendResult.type];
   const { data: subjects, isLoading } = useSubjects();
@@ -39,6 +41,14 @@ export function AttendOutlet(): JSX.Element {
       }
     : undefined;
 
+  if (!isAuthenticated) {
+    return (
+      <div>
+        <p className="body-medium">ログインしていません</p>
+        <p className="body-medium">右上のメニューからログインしましょう</p>
+      </div>
+    );
+  }
   if (isLoading) {
     return (
       <div>
