@@ -33,7 +33,7 @@ export type SideMenuProps = {
 };
 
 const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
-  const subjects = useSubjects();
+  const { data: subjects } = useSubjects();
 
   return (
     <>

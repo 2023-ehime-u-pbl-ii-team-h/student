@@ -11,7 +11,7 @@ const SubjectAttend = () => {
   const queryParams = useSearchParams();
   const subjectId = queryParams.get("subject_id");
   const attendance = useAttendancesSum(subjectId ?? "");
-  const subjects = useSubjects();
+  const { data: subjects } = useSubjects();
   const subjectName = subjects?.find(({ id }) => id === subjectId)?.name;
 
   return (

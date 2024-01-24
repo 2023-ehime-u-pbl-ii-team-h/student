@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import useSWR, { Fetcher } from "swr";
 import { API_ROOT } from "./config";
-import { useAccount, useMsal } from "@azure/msal-react";
 
 export interface Subject {
   id: string;
@@ -14,44 +13,22 @@ export interface Subject {
   }[];
 }
 
-export function useSubjects(): Subject[] | null {
-  const { instance, accounts } = useMsal();
-  const account = useAccount(accounts[0] ?? {});
-  const [subjects, setSubjects] = useState<Subject[] | null>(null);
+const fetcher: Fetcher<Subject[], Record<string, never>> = () =>
+  fetch(`${API_ROOT}/me/subjects`).then(
+    (res) =>
+      res.json() as Promise<
+        {
+          id: string;
+          name: string;
+          boards: {
+            id: string;
+            subject: string;
+            startFrom: string;
+            secondsFromStartToBeLate: number;
+            secondsFromBeLateToEnd: number;
+          }[];
+        }[]
+      >,
+  );
 
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    const SUBJECTS_ENDPOINT = `${API_ROOT}/me/subjects`;
-    (async () => {
-      if (!account) {
-        return;
-      }
-      await instance.initialize();
-      const tokenRes = await instance.acquireTokenSilent({
-        scopes: ["User.Read"],
-        account,
-      });
-      try {
-        const response = await fetch(SUBJECTS_ENDPOINT, {
-          headers: {
-            Authorization: `Bearer ${tokenRes.accessToken}`,
-          },
-          signal,
-        });
-        if (!response.ok) {
-          return;
-        }
-        const fetchedSubjects: Subject[] = await response.json();
-        setSubjects(fetchedSubjects);
-      } catch {}
-    })();
-
-    return () => {
-      controller.abort();
-    };
-  }, [instance, account]);
-
-  return subjects;
-}
+export const useSubjects = () => useSWR({}, fetcher);

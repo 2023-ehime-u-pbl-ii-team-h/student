@@ -16,7 +16,7 @@ const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
 export function AttendOutlet(): JSX.Element {
   const [attendResult, submitAttendAction] = useAttendAction();
   const attendState = BUTTON_STATE_MAP[attendResult.type];
-  const subjects = useSubjects();
+  const { data: subjects, isLoading } = useSubjects();
   const boards = subjects?.flatMap((subject) =>
     subject.boards.map((board) => [subject, board] as const),
   );
@@ -39,6 +39,13 @@ export function AttendOutlet(): JSX.Element {
       }
     : undefined;
 
+  if (isLoading) {
+    return (
+      <div>
+        <p className="body-medium">読み込み中…</p>
+      </div>
+    );
+  }
   if (!subjects) {
     return (
       <div>
@@ -55,13 +62,13 @@ export function AttendOutlet(): JSX.Element {
     );
   }
   return (
-    <>
+    <div>
       <AttendButton state={attendState} onClick={submitAttendAction} />
       <p className="body-medium">出席受付中: {activeBoard[0].name}</p>
       <p className="body-medium">
         {new Date(activeBoard[1].startFrom).toLocaleTimeString()} から
       </p>
       {attendance && <AttendStatus {...attendance} />}
-    </>
+    </div>
   );
 }
