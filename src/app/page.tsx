@@ -1,5 +1,4 @@
 import { AttendOutlet } from "@/organisms/attend-outlet";
-import { Content } from "./content";
 import styles from "./page.module.css";
 import { Suspense } from "react";
 import TopNavBar from "@/organisms/top-navigation-bar";
@@ -7,10 +6,10 @@ import TopNavBar from "@/organisms/top-navigation-bar";
 export default function Home() {
   return (
     <>
-      <TopNavBar />
+      <TopNavBar label="ホーム" />
       <main className={styles.main}>
-        <Suspense fallback={<AttendOutlet attendState="DISABLED" />}>
-          <Content />
+        <Suspense>
+          <AttendOutlet />
         </Suspense>
       </main>
     </>
