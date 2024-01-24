@@ -35,10 +35,10 @@ export function AttendOutlet(): JSX.Element {
     },
   );
   const { data: sum } = useAttendancesSum(
-    accessToken
+    accessToken && activeBoard
       ? {
           accessToken,
-          subjectId: activeBoard ? activeBoard[0].id : "",
+          subjectId: activeBoard[0].id,
         }
       : null,
   );

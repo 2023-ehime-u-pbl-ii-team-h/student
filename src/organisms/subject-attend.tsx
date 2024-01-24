@@ -13,10 +13,10 @@ const SubjectAttend = () => {
   const subjectId = queryParams.get("subject_id");
   const accessToken = useAccessToken();
   const { data: attendance } = useAttendancesSum(
-    accessToken
+    accessToken && subjectId
       ? {
           accessToken,
-          subjectId: subjectId ?? "",
+          subjectId,
         }
       : null,
   );
