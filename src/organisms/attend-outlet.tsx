@@ -39,12 +39,28 @@ export function AttendOutlet(): JSX.Element {
       }
     : undefined;
 
-  if (!sum) {
-    return <AttendButton onClick={submitAttendAction} state={"LOADING"} />;
+  if (!subjects) {
+    return (
+      <div>
+        <p className="body-medium">受講している科目がありません</p>
+        <p className="body-medium">左上のメニューから科目を追加しましょう</p>
+      </div>
+    );
+  }
+  if (!activeBoard) {
+    return (
+      <div>
+        <p className="body-medium">現在開講している科目はありません</p>
+      </div>
+    );
   }
   return (
     <>
       <AttendButton state={attendState} onClick={submitAttendAction} />
+      <p className="body-medium">出席受付中: {activeBoard[0].name}</p>
+      <p className="body-medium">
+        {new Date(activeBoard[1].startFrom).toLocaleTimeString()} から
+      </p>
       {attendance && <AttendStatus {...attendance} />}
     </>
   );
