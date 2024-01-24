@@ -3,6 +3,7 @@ import styles from "./side-menu.module.css";
 import { StandardIconButton } from "../atoms/icon-button";
 import { MdClose } from "react-icons/md";
 import Link from "next/link";
+import { useAccessToken } from "@/queries/access-token";
 
 const SubjectLink = ({
   subject,
@@ -33,7 +34,8 @@ export type SideMenuProps = {
 };
 
 const SideMenu = ({ isOpen, closeMenu }: SideMenuProps) => {
-  const { data: subjects } = useSubjects();
+  const accessToken = useAccessToken();
+  const { data: subjects } = useSubjects(accessToken ? { accessToken } : null);
 
   return (
     <>

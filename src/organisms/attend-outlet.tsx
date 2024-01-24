@@ -5,7 +5,7 @@ import { useAttendAction, AttendResult } from "../commands/attend-action";
 import { useAttendancesSum } from "@/queries/attendances-sum";
 import AttendButton, { AttendButtonState } from "../molecules/attend-button";
 import AttendStatus, { AttendanceProps } from "../molecules/attend-status";
-import { useIsAuthenticated } from "@azure/msal-react";
+import { useAccessToken } from "@/queries/access-token";
 
 const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   READY: "ENABLED",
@@ -15,10 +15,12 @@ const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
 };
 
 export function AttendOutlet(): JSX.Element {
-  const isAuthenticated = useIsAuthenticated();
-  const [attendResult, submitAttendAction] = useAttendAction();
+  const accessToken = useAccessToken();
+  const [attendResult, submitAttendAction] = useAttendAction(accessToken);
   const attendState = BUTTON_STATE_MAP[attendResult.type];
-  const { data: subjects, isLoading } = useSubjects();
+  const { data: subjects, isLoading } = useSubjects(
+    accessToken ? { accessToken } : null,
+  );
   const boards = subjects?.flatMap((subject) =>
     subject.boards.map((board) => [subject, board] as const),
   );
@@ -32,7 +34,14 @@ export function AttendOutlet(): JSX.Element {
       );
     },
   );
-  const sum = useAttendancesSum(activeBoard ? activeBoard[0].id : "");
+  const { data: sum } = useAttendancesSum(
+    accessToken
+      ? {
+          accessToken,
+          subjectId: activeBoard ? activeBoard[0].id : "",
+        }
+      : null,
+  );
   const attendance: AttendanceProps | undefined = sum
     ? {
         attendanceCount: sum.onTime,
@@ -41,7 +50,7 @@ export function AttendOutlet(): JSX.Element {
       }
     : undefined;
 
-  if (!isAuthenticated) {
+  if (!accessToken) {
     return (
       <div>
         <p className="body-medium">ログインしていません</p>

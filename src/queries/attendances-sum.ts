@@ -17,7 +17,9 @@ const fetcher: Fetcher<
     },
   }).then((res) => res.json() as Promise<AttendancesSum>);
 
-export const useAttendancesSum = (props: {
-  accessToken: string;
-  subjectId: string;
-}) => useSWR(props, fetcher);
+export const useAttendancesSum = (
+  props: {
+    accessToken: string;
+    subjectId: string;
+  } | null,
+) => useSWR(props, fetcher);

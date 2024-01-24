@@ -1,5 +1,5 @@
 import { API_ROOT } from "@/queries/config";
-import { useAccount, useMsal } from "@azure/msal-react";
+
 import { useState, useCallback } from "react";
 
 const ATTEND_API_ENDPOINT = `${API_ROOT}/attendances`;
@@ -10,27 +10,20 @@ export type AttendResult =
   | { type: "SUCCESS"; response: Response }
   | { type: "FAILURE" };
 
-export function useAttendAction(): [
-  result: AttendResult,
-  submit: () => Promise<void>,
-] {
-  const { instance, accounts } = useMsal();
-  const account = useAccount(accounts[0] ?? {});
+export function useAttendAction(
+  accessToken: string | null,
+): [result: AttendResult, submit: () => Promise<void>] {
   const [result, setResult] = useState<AttendResult>({ type: "READY" });
 
   const submit = useCallback(async () => {
-    if (!account) {
+    if (!accessToken) {
       return;
     }
     setResult({ type: "SUBMITTING" });
-    const tokenRes = await instance.acquireTokenSilent({
-      scopes: ["User.Read"],
-      account,
-    });
     try {
       const response = await fetch(ATTEND_API_ENDPOINT, {
         headers: {
-          Authorization: `Bearer ${tokenRes.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
         },
         method: "POST",
       });
@@ -43,7 +36,7 @@ export function useAttendAction(): [
       console.error(error);
       setResult({ type: "FAILURE" });
     }
-  }, [instance, account]);
+  }, [accessToken]);
 
   return [result, submit];
 }

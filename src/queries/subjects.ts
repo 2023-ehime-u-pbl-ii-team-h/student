@@ -37,5 +37,5 @@ const fetcher: Fetcher<Subject[], { accessToken: string }> = ({
       >,
   );
 
-export const useSubjects = (props: { accessToken: string }) =>
+export const useSubjects = (props: { accessToken: string } | null) =>
   useSWR(props, fetcher);

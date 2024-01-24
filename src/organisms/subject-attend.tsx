@@ -6,12 +6,21 @@ import styles from "./subject-attend.module.css";
 import { useAttendancesSum } from "@/queries/attendances-sum";
 import { useSearchParams } from "next/navigation";
 import { useSubjects } from "@/queries/subjects";
+import { useAccessToken } from "@/queries/access-token";
 
 const SubjectAttend = () => {
   const queryParams = useSearchParams();
   const subjectId = queryParams.get("subject_id");
-  const attendance = useAttendancesSum(subjectId ?? "");
-  const { data: subjects } = useSubjects();
+  const accessToken = useAccessToken();
+  const { data: attendance } = useAttendancesSum(
+    accessToken
+      ? {
+          accessToken,
+          subjectId: subjectId ?? "",
+        }
+      : null,
+  );
+  const { data: subjects } = useSubjects(accessToken ? { accessToken } : null);
   const subjectName = subjects?.find(({ id }) => id === subjectId)?.name;
 
   return (
