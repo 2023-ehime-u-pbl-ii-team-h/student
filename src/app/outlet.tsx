@@ -1,11 +1,10 @@
 "use client";
 
-import { logoutAndReload } from "@/commands/logout-action";
 import AccountMenu from "@/molecules/account-menu";
 import SideMenu from "@/molecules/side-menu";
 import TopNavBar from "@/organisms/top-navigation-bar";
 import { InteractionType } from "@azure/msal-browser";
-import { useAccount, useMsalAuthentication } from "@azure/msal-react";
+import { useAccount, useMsal, useMsalAuthentication } from "@azure/msal-react";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 export function Outlet({
@@ -21,14 +20,11 @@ export function Outlet({
 
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const {
-    result,
-    login: reLogin,
-    acquireToken,
-  } = useMsalAuthentication(InteractionType.Redirect, {
+  const { login: reLogin } = useMsalAuthentication(InteractionType.Redirect, {
     scopes: ["User.Read"],
   });
-  const account = useAccount(result?.account ?? {});
+  const { instance, accounts } = useMsal();
+  const account = useAccount(accounts[0] ?? {});
   const user: { name: string; initials: string } | null = account
     ? {
         name: account.name ?? "",
@@ -72,14 +68,7 @@ export function Outlet({
     if (!account) {
       return;
     }
-    const tokenRes = await acquireToken(InteractionType.Redirect, {
-      account,
-      scopes: ["User.Read"],
-    });
-    if (!tokenRes) {
-      return;
-    }
-    await logoutAndReload(tokenRes.accessToken);
+    await instance.logout();
   };
 
   return (
