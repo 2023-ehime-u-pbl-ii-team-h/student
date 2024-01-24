@@ -28,6 +28,7 @@ export function useSubjects(): Subject[] | null {
       if (!account) {
         return;
       }
+      await instance.initialize();
       const tokenRes = await instance.acquireTokenSilent({
         scopes: ["User.Read"],
         account,
