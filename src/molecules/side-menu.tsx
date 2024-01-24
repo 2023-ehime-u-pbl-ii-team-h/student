@@ -1,4 +1,4 @@
-import { Subject, useSubjects } from "../queries/subjects";
+import { Subjects, useSubjects } from "../queries/subjects";
 import styles from "./side-menu.module.css";
 import { StandardIconButton } from "../atoms/icon-button";
 import { MdClose } from "react-icons/md";
@@ -9,7 +9,7 @@ const SubjectLink = ({
   subject,
   closeMenu,
 }: {
-  subject: Subject;
+  subject: Subjects[number];
   closeMenu: () => void;
 }): JSX.Element => (
   <Link
