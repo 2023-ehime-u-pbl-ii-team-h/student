@@ -14,7 +14,16 @@ export function SubjectForm(): JSX.Element {
   const [selected, setSelected] = useState<PartialSubject | null>(null);
 
   async function subscribeSubject() {
-    if (!selected || !account) {
+    if (!selected) {
+      return;
+    }
+
+    await instance.initialize();
+    if (!account) {
+      await instance.loginRedirect({
+        scopes: ["User.Read"],
+        redirectUri: new URL("/", location.href).toString(),
+      });
       return;
     }
 
