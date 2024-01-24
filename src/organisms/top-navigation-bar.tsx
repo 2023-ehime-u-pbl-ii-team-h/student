@@ -72,6 +72,7 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
     await instance.loginRedirect({
       scopes: ["User.Read"],
       prompt: "select_account",
+      redirectUri: new URL("/", location.href).toString(),
     });
   };
 
