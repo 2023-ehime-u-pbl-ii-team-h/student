@@ -91,36 +91,33 @@ const TopNavBar = ({ label = DEFAULT_LABEL }: TopNavBarProps) => {
   };
 
   return (
-    <>
-      <div className={`${styles.topNavBar} surface on-surface-text`}>
-        <StandardIconButton
-          alt="サイドメニューを開く"
-          icon={<MdMenu />}
-          onClick={openSideMenu}
-        />
-        <CurrentScreenLabel label={label} />
-        <StandardIconButton
-          alt=""
-          icon={
-            user ? (
-              <UserAvatar userInitial={user.initials} />
-            ) : (
-              <MdOutlinePerson />
-            )
-          }
-          onClick={toggleAccountMenu}
-        />
-      </div>
+    <div className={`${styles.topNavBar} surface on-surface-text`}>
+      <StandardIconButton
+        alt="サイドメニューを開く"
+        icon={<MdMenu />}
+        onClick={openSideMenu}
+      />
+      <CurrentScreenLabel label={label} />
+      <StandardIconButton
+        alt=""
+        icon={
+          user ? (
+            <UserAvatar userInitial={user.initials} />
+          ) : (
+            <MdOutlinePerson />
+          )
+        }
+        onClick={toggleAccountMenu}
+      />
       <SideMenu isOpen={isSideMenuOpen} closeMenu={closeSideMenu} />
-      {isAccountMenuOpen && (
-        <AccountMenu
-          ref={menuRef}
-          user={user}
-          onLogout={logout}
-          onLogin={login}
-        />
-      )}
-    </>
+      <AccountMenu
+        isOpen={isAccountMenuOpen}
+        ref={menuRef}
+        user={user}
+        onLogout={logout}
+        onLogin={login}
+      />
+    </div>
   );
 };
 

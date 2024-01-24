@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px 8px color-mix(in srgb, currentcolor 25%, transparent);
+  visibility: hidden;
+}
+.accountMenu[data-open="true"] {
+  visibility: visible;
 }
 
 .accountInfo {
