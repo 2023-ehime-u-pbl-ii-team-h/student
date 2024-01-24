@@ -1,9 +1,11 @@
 .button {
+  display: flow-root;
   position: relative;
   height: 2.5rem;
   border: 0;
   overflow: hidden;
   background-color: transparent;
+  z-index: 0;
 }
 .filled:disabled {
   background: color-mix(
