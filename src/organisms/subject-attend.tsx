@@ -7,6 +7,7 @@ import { useAttendancesSum } from "@/queries/attendances-sum";
 import { useSearchParams } from "next/navigation";
 import { useSubjects } from "@/queries/subjects";
 import { useAccessToken } from "@/queries/access-token";
+import { Outlet } from "@/app/outlet";
 
 const SubjectAttend = () => {
   const queryParams = useSearchParams();
@@ -24,8 +25,7 @@ const SubjectAttend = () => {
   const subjectName = subjects?.find(({ id }) => id === subjectId)?.name;
 
   return (
-    <>
-      <TopNavBar label={subjectName} />
+    <Outlet title={subjectName ?? "読み込み中…"}>
       <div className={styles.container}>
         {attendance ? (
           <AttendStatus
@@ -39,7 +39,7 @@ const SubjectAttend = () => {
           </div>
         )}
       </div>
-    </>
+    </Outlet>
   );
 };
 

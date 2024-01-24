@@ -1,11 +1,10 @@
-import TopNavBar from "@/organisms/top-navigation-bar";
 import { SubjectForm } from "@/organisms/subject-form";
+import { Outlet } from "../outlet";
 
 export default function AddSubjectPage(): JSX.Element {
   return (
-    <main>
-      <TopNavBar label="受講科目の追加" />
+    <Outlet title="受講科目の追加">
       <SubjectForm />
-    </main>
+    </Outlet>
   );
 }

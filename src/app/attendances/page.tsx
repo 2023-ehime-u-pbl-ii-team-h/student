@@ -3,11 +3,9 @@ import { Suspense } from "react";
 
 const AttendancesPage = () => {
   return (
-    <main>
-      <Suspense fallback={<p className="body-medium">読み込み中…</p>}>
-        <SubjectAttend />
-      </Suspense>
-    </main>
+    <Suspense fallback={<p className="body-medium">読み込み中…</p>}>
+      <SubjectAttend />
+    </Suspense>
   );
 };
 

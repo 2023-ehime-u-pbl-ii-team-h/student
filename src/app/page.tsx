@@ -1,17 +1,16 @@
 import { AttendOutlet } from "@/organisms/attend-outlet";
 import styles from "./page.module.css";
 import { Suspense } from "react";
-import TopNavBar from "@/organisms/top-navigation-bar";
+import { Outlet } from "./outlet";
 
 export default function Home() {
   return (
-    <>
-      <TopNavBar label="ホーム" />
-      <main className={styles.main}>
-        <Suspense>
+    <Suspense>
+      <Outlet title="ホーム">
+        <div className={styles.main}>
           <AttendOutlet />
-        </Suspense>
-      </main>
-    </>
+        </div>
+      </Outlet>
+    </Suspense>
   );
 }
