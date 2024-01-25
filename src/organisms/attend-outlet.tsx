@@ -6,6 +6,7 @@ import { useAttendancesSum } from "@/queries/attendances-sum";
 import AttendButton, { AttendButtonState } from "../molecules/attend-button";
 import AttendStatus, { AttendanceProps } from "../molecules/attend-status";
 import { useAccessToken } from "@/queries/access-token";
+import { useMe } from "@/queries/me";
 
 const BUTTON_STATE_MAP: Record<AttendResult["type"], AttendButtonState> = {
   READY: "ENABLED",
@@ -49,6 +50,7 @@ export function AttendOutlet(): JSX.Element {
         absenceCount: sum.miss,
       }
     : undefined;
+  const { data: me } = useMe(accessToken ? { accessToken } : null);
 
   if (!accessToken) {
     return (
@@ -62,6 +64,15 @@ export function AttendOutlet(): JSX.Element {
     return (
       <div>
         <p className="body-medium">読み込み中…</p>
+      </div>
+    );
+  }
+  if (me?.role !== "STUDENT") {
+    return (
+      <div>
+        <p className="body-medium">
+          教員アカウントではこのアプリは利用できません。右上のメニューからログアウトして切り替えましょう
+        </p>
       </div>
     );
   }
