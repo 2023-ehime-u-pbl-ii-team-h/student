@@ -92,13 +92,13 @@ export function AttendOutlet(): JSX.Element {
     );
   }
   return (
-    <div>
+    <>
       <AttendButton state={attendState} onClick={submitAttendAction} />
       <p className="body-medium">出席受付中: {activeBoard[0].name}</p>
       <p className="body-medium">
         {new Date(activeBoard[1].startFrom).toLocaleTimeString()} から
       </p>
       {attendance && <AttendStatus {...attendance} />}
-    </div>
+    </>
   );
 }
